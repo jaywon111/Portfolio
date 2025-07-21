@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -14,21 +15,21 @@
             100% { background-position: 0% 50%; }
         }
         @keyframes dramaticEnter {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes pulseText {
             0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            100% { transform: scale(1.05); }
         }
         @keyframes pulse {
             0% { transform: scale(0); }
-            50% { transform: scale(1.5); }
+            50% { transform: scale(1.3); }
             100% { transform: scale(0); }
         }
         @keyframes floatText {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
         @keyframes blink {
             50% { border-right-color: transparent; }
@@ -39,28 +40,59 @@
             100% { transform: scale(1); }
         }
         @keyframes glowPulse {
-            0% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
-            100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+            0% { box-shadow: 0 0 8px rgba(94, 234, 212, 0.5); }
+            50% { box-shadow: 0 0 16px rgba(94, 234, 212, 0.7); }
+            100% { box-shadow: 0 0 8px rgba(94, 234, 212, 0.5); }
         }
-        @keyframes cursorGlow {
-            0% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(0, 212, 255, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
+        @keyframes headerGlow {
+            0% { text-shadow: 0 0 5px rgba(94, 234, 212, 0.5); }
+            50% { text-shadow: 0 0 15px rgba(94, 234, 212, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(94, 234, 212, 0.5); }
+        }
+        @keyframes cardRotate {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(2deg); }
+            100% { transform: rotate(0deg); }
         }
         .gradient-text {
-            background: linear-gradient(45deg, #00d4ff, #c084fc);
+            background: linear-gradient(45deg, #FFD700, #94E4D4);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .holo-glow {
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5), 0 0 25px rgba(147, 51, 234, 0.3);
+            box-shadow: 0 0 12px rgba(94, 234, 212, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
         .holo-glow:hover {
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.7), 0 0 40px rgba(147, 51, 234, 0.5);
-            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(94, 234, 212, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+            transform: scale(1.03);
+        }
+        .social-icon {
+            position: relative;
+        }
+        .social-icon:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2E3B3E;
+            color: #E6E6E6;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         html {
             scroll-behavior: smooth;
@@ -71,19 +103,19 @@
             min-height: 100vh;
             margin: 0;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background: linear-gradient(135deg, #1C2526, #2E3B3E, #4A6366);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             transition: background 0.5s ease;
         }
         body.light-theme {
-            background: linear-gradient(135deg, #e0f7fa, #b2ebf2, #80deea);
+            background: linear-gradient(135deg, #A3BFFA, #90A4AE, #78909C);
         }
         #particle-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 100%;
             z-index: 1;
             background: transparent;
@@ -98,7 +130,7 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(to right, #00d4ff, #c084fc);
+            background: linear-gradient(to right, #FFD700, #94E4D4);
             z-index: 1000;
             transition: width 0.2s ease;
         }
@@ -114,51 +146,52 @@
             z-index: 1000;
         }
         .chatbot-bubble {
-            background: #2c3e50;
+            background: #2E3B3E;
             border-radius: 15px;
             padding: 10px;
-            color: #fff;
+            color: #E6E6E6;
             max-width: 300px;
             margin-bottom: 10px;
             display: none;
         }
         .chatbot-input {
-            background: #2c3e50;
+            background: #2E3B3E;
             border: none;
             padding: 10px;
             border-radius: 10px;
-            color: #fff;
+            color: #E6E6E6;
             width: 200px;
         }
         #theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #2c3e50;
+            background: #2E3B3E;
             border-radius: 50%;
             width: 50px;
             height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            color: #E6E6E6;
             font-size: 12px;
             z-index: 1000;
             cursor: pointer;
         }
-        #custom-cursor {
+        #nav-toggle {
+            display: none;
             position: fixed;
-            width: 20px;
-            height: 20px;
-            background: rgba(0, 212, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1001;
-            animation: cursorGlow 1s infinite;
-            transform: translate(-50%, -50%);
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #2E3B3E;
+            padding: 10px;
+            border-radius: 5px;
+            color: #E6E6E6;
+            cursor: pointer;
         }
-        #custom-cursor.active {
-            transform: scale(1.5) translate(-50%, -50%);
+        #nav-menu {
+            display: flex;
         }
         .timeline-item {
             opacity: 0;
@@ -169,19 +202,11 @@
             opacity: 1;
             transform: translateY(0);
         }
-        #nav-toggle {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: #2c3e50;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
+        h2.gradient-text {
+            animation: headerGlow 2s infinite;
         }
-        #nav-menu {
-            display: flex;
+        .project-card {
+            animation: cardRotate 4s infinite;
         }
         @media (max-width: 768px) {
             h1 {
@@ -198,7 +223,8 @@
             }
             nav {
                 top: 60px;
-                background: #1c2833;
+                background: #2E3B3E;
+                padding: 8px;
             }
             #nav-toggle {
                 display: block;
@@ -210,52 +236,66 @@
                 top: 60px;
                 left: 0;
                 width: 100%;
-                background: #1c2833;
-                padding: 10px;
+                background: #2E3B3E;
+                padding: 8px 15px;
+                margin: 0;
             }
             #nav-menu.active {
                 display: flex;
             }
             #nav-menu li {
-                margin: 10px 0;
+                margin: 2px 0;
             }
             .project-card {
                 margin: 0 10px;
+                padding: 12px;
             }
             #skills-canvas {
-                height: 300px;
+                height: 350px;
             }
             .chatbot-container {
-                bottom: 10px;
-                right: 10px;
+                bottom: 15px;
+                right: 15px;
             }
             .chatbot-input {
-                width: 150px;
+                width: 160px;
+                padding: 8px;
             }
             .chatbot-bubble {
-                max-width: 200px;
+                max-width: 220px;
+                font-size: 0.85rem;
             }
             .parallax {
-                background-attachment: scroll; /* Disable parallax on mobile for performance */
+                background-attachment: scroll;
             }
             #theme-toggle {
                 width: 40px;
                 height: 40px;
                 font-size: 10px;
             }
-            #custom-cursor {
-                width: 15px;
-                height: 15px;
-            }
             .timeline-item {
-                padding: 4px;
+                padding: 10px;
+                margin: 0 8px;
+            }
+            #about, #contact {
+                margin: 0 10px;
+                padding: 12px;
             }
             .contact form {
-                padding: 0 10px;
+                padding: 0 8px;
             }
             .contact .flex {
                 flex-direction: column;
                 align-items: center;
+                gap: 6px;
+            }
+            body, #particle-canvas {
+                width: 100vw;
+                min-height: 100vh;
+            }
+            .social-icon:hover::after {
+                top: -25px;
+                font-size: 0.7rem;
             }
         }
         @media (max-width: 480px) {
@@ -272,138 +312,153 @@
                 font-size: 0.8rem;
             }
             #skills-canvas {
-                height: 200px;
+                height: 250px;
             }
             .chatbot-input {
                 width: 120px;
+                padding: 6px;
             }
             .chatbot-bubble {
-                max-width: 150px;
+                max-width: 180px;
+                font-size: 0.75rem;
             }
             #theme-toggle {
                 width: 35px;
                 height: 35px;
                 font-size: 9px;
             }
-            #custom-cursor {
-                width: 12px;
-                height: 12px;
+            .timeline-item {
+                padding: 8px;
+                margin: 0 5px;
+            }
+            #about, #contact {
+                margin: 0 8px;
+                padding: 10px;
+            }
+            .social-icon:hover::after {
+                top: -20px;
+                font-size: 0.6rem;
             }
         }
     </style>
 </head>
 <body class="font-['Poppins'] leading-relaxed text-gray-100">
     <div id="progress-bar" class="w-0"></div>
-    <div id="custom-cursor"></div>
     <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full z-[1] pointer-events-none"></canvas>
     <div id="theme-toggle" class="holo-glow">Dark</div>
     <button id="nav-toggle" class="holo-glow">☰</button>
-    <nav class="fixed top-0 w-full bg-[#1c2833]/90 backdrop-blur-sm p-6 shadow-[0_2px_15px_rgba(0,0,0,0.3)] z-[900]">
+    <nav class="fixed top-0 w-full bg-[#2E3B3E]/90 backdrop-blur-sm p-6 shadow-[0_2px_15px_rgba(0,0,0,0.3)] z-[900]">
         <ul id="nav-menu" class="flex justify-center gap-10">
-            <li><a href="#home" class="text-gray-100 hover:text-cyan-400 font-semibold text-lg transition-colors">Home</a></li>
-            <li><a href="#about" class="text-gray-100 hover:text-cyan-400 font-semibold text-lg transition-colors">About</a></li>
-            <li><a href="#skills" class="text-gray-100 hover:text-cyan-400 font-semibold text-lg transition-colors">Skills</a></li>
-            <li><a href="#projects" class="text-gray-100 hover:text-cyan-400 font-semibold text-lg transition-colors">Projects</a></li>
-            <li><a href="#contact" class="text-gray-100 hover:text-cyan-400 font-semibold text-lg transition-colors">Contact</a></li>
+            <li><a href="#home" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Home</a></li>
+            <li><a href="#about" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">About</a></li>
+            <li><a href="#skills" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Skills</a></li>
+            <li><a href="#projects" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Projects</a></li>
+            <li><a href="#contact" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Contact</a></li>
         </ul>
     </nav>
 
     <main class="mt-24 z-[2]">
-        <section id="home" class="min-h-screen flex flex-col items-center justify-center relative animate-[fadeIn_1s_ease_forwards] parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?space')">
-            <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(0,212,255,0.1)_0%,transparent_70%)] animate-[pulse_5s_infinite]"></div>
+        <section id="home" class="min-h-screen flex flex-col items-center justify-center relative animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?space')">
+            <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(94,234,212,0.1)_0%,transparent_70%)] animate-[pulse_5s_infinite]"></div>
             <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4 animate-[floatText_3s_ease-in-out_infinite] z-10">Hi, I'm Jay!</h1>
-            <p id="typing-text" class="text-xl md:text-2xl text-[#b0c4de] z-10 border-r-4 border-cyan-400 animate-[blink_0.7s_infinite]"></p>
+            <p id="typing-text" class="text-xl md:text-2xl text-[#E6E6E6] z-10 border-r-4 border-[#94E4D4] animate-[blink_0.7s_infinite]"></p>
         </section>
 
-        <section id="about" class="min-h-screen flex flex-col items-center justify-center bg-[#16213e]/90 rounded-[20px] max-w-3xl mx-auto p-12 animate-[fadeIn_1s_ease_forwards] parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?tech')">
+        <section id="about" class="min-h-screen flex flex-col items-center justify-center bg-[#2E3B3E]/90 rounded-[20px] max-w-3xl mx-auto p-12 animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?tech')">
             <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">About Me</h2>
             <div class="timeline flex flex-col gap-8 w-full">
-                <div class="timeline-item bg-[#2c3e50]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
+                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
                     <h3 class="text-xl font-semibold gradient-text">2022: Started Coding</h3>
-                    <p class="text-[#b0c4de]">Began my journey with HTML and CSS, building my first static websites.</p>
+                    <p class="text-[#E6E6E6]">Began my journey with HTML and CSS, building my first static websites.</p>
                 </div>
-                <div class="timeline-item bg-[#2c3e50]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
+                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
                     <h3 class="text-xl font-semibold gradient-text">2023: Mastered JavaScript</h3>
-                    <p class="text-[#b0c4de]">Dived into JavaScript, creating interactive web apps like Celestial To-Do.</p>
+                    <p class="text-[#E6E6E6]">Dived into JavaScript, creating interactive web apps like Celestial To-Do.</p>
                 </div>
-                <div class="timeline-item bg-[#2c3e50]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
+                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
                     <h3 class="text-xl font-semibold gradient-text">2024: Explored Node.js</h3>
-                    <p class="text-[#b0c4de]">Started learning back-end development with Node.js to build APIs.</p>
+                    <p class="text-[#E6E6E6]">Started learning back-end development with Node.js to build APIs.</p>
                 </div>
-                <div class="timeline-item bg-[#2c3e50]/80 backdrop-blur-lg p-6 rounded העז"15px] holo-glow">
+                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
                     <h3 class="text-xl font-semibold gradient-text">2025: Goal</h3>
-                    <p class="text-[#b0c4de]">Aiming to raise 700k for education and expand skills in React and beyond!</p>
+                    <p class="text-[#E6E6E6]">Aiming to raise 700k for education and expand skills in React and beyond!</p>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards]">
+        <section id="skills" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] section-animate">
             <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">My Skills</h2>
             <canvas id="skills-canvas" class="holo-glow"></canvas>
-            <p id="skill-info" class="text-lg text-[#b0c4de] mt-4"></p>
+            <p id="skill-info" class="text-lg text-[#E6E6E6] mt-4"></p>
         </section>
 
-        <section id="projects" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?code')">
+        <section id="projects" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?code')">
             <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-12">My Projects</h2>
             <div class="grid grid-cols-1 gap-10 mt-12 max-w-6xl w-full px-6">
-                <div class="project-card bg-[#2c3e50]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
+                <div class="project-card bg-[#3A4A4D]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
                     <h3 class="text-2xl font-semibold gradient-text mb-4">Celestial To-Do</h3>
-                    <p class="text-[#b0c4de] text-base mb-4">A futuristic To-Do List app with glassmorphism design, featuring task persistence, glow animations, and a cosmic UI. Built with HTML, JavaScript, and Tailwind CSS.</p>
+                    <p class="text-[#E6E6E6] text-base mb-4">A futuristic To-Do List app with glassmorphism design, featuring task persistence, glow animations, and a cosmic UI. Built with HTML, JavaScript, and Tailwind CSS.</p>
                     <div class="flex gap-4">
-                        <a href="https://jaywon111.github.io/JAY-S-To-Do/" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-400 to-purple-400 text-white rounded-lg hover:from-cyan-500 hover:to-purple-500 transition-all holo-glow">Visit App</a>
-                        <a href="https://github.com/jaywon111/JAY-S-To-Do" target="_blank" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-all">Source Code</a>
+                        <a href="https://jaywon111.github.io/JAY-S-To-Do/" target="_blank" class="px-4 py-2 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-lg hover:from-[#E6C200] hover:to-[#80D0C0] transition-all holo-glow">Visit App</a>
+                        <a href="https://github.com/jaywon111/JAY-S-To-Do" target="_blank" class="px-4 py-2 bg-[#4A6366] text-[#E6E6E6] rounded-lg hover:bg-[#3A4A4D] transition-all">Source Code</a>
                     </div>
                 </div>
-                <div class="project-card bg-[#2c3e50]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
+                <div class="project-card bg-[#3A4A4D]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
                     <h3 class="text-2xl font-semibold gradient-text mb-4">Responsive Landing Page</h3>
-                    <p class="text-[#b0c4de] text-base mb-4">A stunning landing page showcasing advanced CSS techniques and responsiveness.</p>
+                    <p class="text-[#E6E6E6] text-base mb-4">A stunning landing page showcasing advanced CSS techniques and responsiveness.</p>
                     <div class="flex gap-4">
-                        <a href="#" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-400 to-purple-400 text-white rounded-lg hover:from-cyan-500 hover:to-purple-500 transition-all holo-glow">Visit App</a>
-                        <a href="#" target="_blank" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-all">Source Code</a>
+                        <a href="#" target="_blank" class="px-4 py-2 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-lg hover:from-[#E6C200] hover:to-[#80D0C0] transition-all holo-glow">Visit App</a>
+                        <a href="#" target="_blank" class="px-4 py-2 bg-[#4A6366] text-[#E6E6E6] rounded-lg hover:bg-[#3A4A4D] transition-all">Source Code</a>
                     </div>
                 </div>
-                <div class="project-card bg-[#2c3e50]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
+                <div class="project-card bg-[#3A4A4D]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
                     <h3 class="text-2xl font-semibold gradient-text mb-4">Portfolio API</h3>
-                    <p class="text-[#b0c4de] text-base mb-4">A back-end API project (in progress) to power this portfolio with Node.js.</p>
+                    <p class="text-[#E6E6E6] text-base mb-4">A back-end API project (in progress) to power this portfolio with Node.js.</p>
                     <div class="flex gap-4">
-                        <a href="#" target="_blank" class="px-4 py-2 bg-gradient-to-r from-cyan-400 to-purple-400 text-white rounded-lg hover:from-cyan-500 hover:to-purple-500 transition-all holo-glow">Visit App</a>
-                        <a href="#" target="_blank" class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 transition-all">Source Code</a>
+                        <a href="#" target="_blank" class="px-4 py-2 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-lg hover:from-[#E6C200] hover:to-[#80D0C0] transition-all holo-glow">Visit App</a>
+                        <a href="#" target="_blank" class="px-4 py-2 bg-[#4A6366] text-[#E6E6E6] rounded-lg hover:bg-[#3A4A4D] transition-all">Source Code</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?contact')">
+        <section id="contact" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?contact')">
             <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">Contact Me</h2>
-            <form class="flex flex-col gap-6 w-full max-w-xl">
-                <input type="text" placeholder="Your Name" required class="p-4 bg-white/10 border-none border border-white/20 rounded-[15px] text-gray-100 text-base focus:outline-none focus:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all holo-glow">
-                <input type="email" placeholder="Your Email" required class="p-4 bg-white/10 border-none border border-white/20 rounded-[15px] text-gray-100 text-base focus:outline-none focus:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all holo-glow">
-                <textarea placeholder="Your Message" required class="p-4 bg-white/10 border-none border border-white/20 rounded-[15px] text-gray-100 text-base focus:outline-none focus:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all min-h-[150px] resize-y holo-glow"></textarea>
-                <button type="submit" class="p-4 bg-cyan-400 text-[#1a1a2e] rounded-[15px] font-semibold text-base hover:bg-cyan-500 hover:scale-105 transition-all holo-glow">Send Message</button>
+            <form id="contact-form" class="flex flex-col gap-6 w-full max-w-xl">
+                <input type="text" name="name" placeholder="Your Name" required class="p-4 bg-[#3A4A4D]/80 border-none border border-[#E6E6E6]/20 rounded-[15px] text-[#E6E6E6] text-base focus:outline-none focus:shadow-[0_0_20px_rgba(94,234,212,0.5)] transition-all holo-glow">
+                <input type="email" name="email" placeholder="Your Email" required class="p-4 bg-[#3A4A4D]/80 border-none border border-[#E6E6E6]/20 rounded-[15px] text-[#E6E6E6] text-base focus:outline-none focus:shadow-[0_0_20px_rgba(94,234,212,0.5)] transition-all holo-glow">
+                <textarea name="message" placeholder="Your Message" required class="p-4 bg-[#3A4A4D]/80 border-none border border-[#E6E6E6]/20 rounded-[15px] text-[#E6E6E6] text-base focus:outline-none focus:shadow-[0_0_20px_rgba(94,234,212,0.5)] transition-all min-h-[150px] resize-y holo-glow"></textarea>
+                <button type="submit" class="p-4 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-[15px] font-semibold text-base hover:from-[#E6C200] hover:to-[#80D0C0] hover:scale-105 transition-all holo-glow">Send Message</button>
             </form>
+            <p id="form-message" class="text-[#E6E6E6] mt-4 hidden">Message saved! Thank you for reaching out.</p>
             <div class="flex gap-6 mt-8">
-                <a href="[INSERT YOUR GITHUB URL HERE]" target="_blank" class="text-gray-100 hover:text-cyan-400 text-lg holo-glow">GitHub</a>
-                <a href="[INSERT YOUR WHATSAPP LINK HERE]" target="_blank" class="text-gray-100 hover:text-cyan-400 text-lg holo-glow">WhatsApp</a>
-                <a href="tel:[INSERT YOUR PHONE NUMBER HERE]" class="text-gray-100 hover:text-cyan-400 text-lg holo-glow">Phone</a>
+                <a href="https://github.com/jaywon111" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="GitHub"><i class="fab fa-github fa-2x"></i></a>
+                <a href="[INSERT YOUR WHATSAPP LINK HERE]" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="WhatsApp"><i class="fab fa-whatsapp fa-2x"></i></a>
+                <a href="[INSERT YOUR DISCORD URL HERE]" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="Discord"><i class="fab fa-discord fa-2x"></i></a>
+                <a href="tel:+2348163324132" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="Phone"><i class="fas fa-phone fa-2x"></i></a>
+                <a href="https://x.com/catrotangold" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="X"><i class="fab fa-x-twitter fa-2x"></i></a>
             </div>
         </section>
     </main>
 
     <div class="chatbot-container">
-        <button id="chatbot-toggle" class="p-3 bg-cyan-400 text-[#1a1a2e] rounded-full holo-glow">Chat with AI</button>
-        <button id="voice-toggle" class="p-3 bg-purple-400 text-[#1a1a2e] rounded-full holo-glow ml-2">Voice</button>
+        <button id="chatbot-toggle" class="p-3 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-full holo-glow">Chat with AI</button>
+        <button id="voice-toggle" class="p-3 bg-gradient-to-r from-[#94E4D4] to-[#FFD700] text-[#1C2526] rounded-full holo-glow ml-2">Voice</button>
         <div id="chatbot-bubble" class="chatbot-bubble"></div>
         <input id="chatbot-input" class="chatbot-input" placeholder="Ask about my portfolio...">
     </div>
 
     <script>
-        // Particle effect with starfield connections
+        // Particle effect with starfield connections and click interaction
         const particleCanvas = document.getElementById('particle-canvas');
         const particleCtx = particleCanvas.getContext('2d');
+        let gravityWell = null;
 
         function resizeParticleCanvas() {
             particleCanvas.width = window.innerWidth;
             particleCanvas.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+            particleCanvas.style.width = '100vw';
+            particleCanvas.style.height = '100%';
         }
 
         window.addEventListener('resize', resizeParticleCanvas);
@@ -419,10 +474,25 @@
                 this.size = Math.random() * (isMobile ? 4 : 6) + 2;
                 this.speedX = Math.random() * 2 - 1;
                 this.speedY = Math.random() * 2 - 1;
-                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                this.color = `hsl(${Math.random() * 60 + 180}, 50%, 60%)`;
+                this.baseSpeedX = this.speedX;
+                this.baseSpeedY = this.speedY;
             }
 
             update() {
+                if (gravityWell) {
+                    const dx = gravityWell.x - this.x;
+                    const dy = gravityWell.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        const force = (100 - distance) / 100;
+                        this.speedX += (dx / distance) * force * 0.05;
+                        this.speedY += (dy / distance) * force * 0.05;
+                    } else {
+                        this.speedX = this.baseSpeedX;
+                        this.speedY = this.baseSpeedY;
+                    }
+                }
                 this.x += this.speedX;
                 this.y += this.speedY;
                 if (this.x < 0 || this.x > particleCanvas.width) this.speedX = -this.speedX;
@@ -451,7 +521,7 @@
                     const dy = particlesArray[i].y - particlesArray[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < (isMobile ? 80 : 100)) {
-                        particleCtx.strokeStyle = `rgba(0, 212, 255, ${1 - distance / (isMobile ? 80 : 100)})`;
+                        particleCtx.strokeStyle = `rgba(94, 234, 212, ${0.7 - distance / (isMobile ? 80 : 100)})`;
                         particleCtx.lineWidth = 1;
                         particleCtx.beginPath();
                         particleCtx.moveTo(particlesArray[i].x, particlesArray[i].y);
@@ -472,6 +542,18 @@
             requestAnimationFrame(animateParticles);
         }
 
+        particleCanvas.addEventListener('click', (e) => {
+            gravityWell = { x: e.clientX, y: e.clientY };
+            setTimeout(() => { gravityWell = null; }, 1000);
+        });
+
+        particleCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            gravityWell = { x: touch.clientX, y: touch.clientY };
+            setTimeout(() => { gravityWell = null; }, 1000);
+        });
+
         initParticles();
         animateParticles();
 
@@ -479,14 +561,14 @@
         const skillsCanvas = document.getElementById('skills-canvas');
         const skillsCtx = skillsCanvas.getContext('2d');
         skillsCanvas.width = window.innerWidth;
-        skillsCanvas.height = window.innerWidth <= 768 ? 300 : 400;
+        skillsCanvas.height = window.innerWidth <= 768 ? 350 : 400;
 
         const skills = [
-            { name: 'HTML', level: 90, x: window.innerWidth * 0.2, y: 100, color: '#e34c26' },
-            { name: 'CSS', level: 85, x: window.innerWidth * 0.4, y: 150, color: '#264de4' },
-            { name: 'JavaScript', level: 80, x: window.innerWidth * 0.6, y: 120, color: '#f0db4f' },
-            { name: 'Node.js', level: 60, x: window.innerWidth * 0.3, y: 250, color: '#3c873a' },
-            { name: 'React', level: 50, x: window.innerWidth * 0.5, y: 200, color: '#61dafb' }
+            { name: 'HTML', level: 90, x: window.innerWidth * 0.15, y: 100, color: '#DAA520' },
+            { name: 'CSS', level: 85, x: window.innerWidth * 0.35, y: 150, color: '#5EEAD4' },
+            { name: 'JavaScript', level: 80, x: window.innerWidth * 0.55, y: 120, color: '#FFD700' },
+            { name: 'Node.js', level: 60, x: window.innerWidth * 0.25, y: 250, color: '#4A6366' },
+            { name: 'React', level: 50, x: window.innerWidth * 0.45, y: 200, color: '#94E4D4' }
         ];
 
         class SkillOrb {
@@ -496,7 +578,7 @@
                 this.x = skill.x;
                 this.y = skill.y;
                 this.color = skill.color;
-                this.radius = skill.level / (window.innerWidth <= 768 ? 3 : 2);
+                this.radius = skill.level / (window.innerWidth <= 768 ? 4 : 2.5);
                 this.angle = Math.random() * Math.PI * 2;
             }
 
@@ -510,14 +592,32 @@
                 skillsCtx.beginPath();
                 skillsCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 skillsCtx.fill();
-                skillsCtx.fillStyle = '#fff';
-                skillsCtx.font = window.innerWidth <= 768 ? '12px Poppins' : '16px Poppins';
+                skillsCtx.fillStyle = '#E6E6E6';
+                skillsCtx.font = window.innerWidth <= 768 ? '10px Poppins' : '14px Poppins';
                 skillsCtx.textAlign = 'center';
-                skillsCtx.fillText(this.name, this.x, this.y + this.radius + 20);
+                skillsCtx.fillText(this.name, this.x, this.y + this.radius + 15);
             }
         }
 
         const skillOrbs = skills.map(skill => new SkillOrb(skill));
+
+        function connectSkills() {
+            for (let i = 0; i < skillOrbs.length; i++) {
+                for (let j = i + 1; j < skillOrbs.length; j++) {
+                    const dx = skillOrbs[i].x - skillOrbs[j].x;
+                    const dy = skillOrbs[i].y - skillOrbs[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < (isMobile ? 100 : 150)) {
+                        skillsCtx.strokeStyle = `rgba(94, 234, 212, ${0.5 - distance / (isMobile ? 100 : 150)})`;
+                        skillsCtx.lineWidth = 1;
+                        skillsCtx.beginPath();
+                        skillsCtx.moveTo(skillOrbs[i].x, skillOrbs[i].y);
+                        skillsCtx.lineTo(skillOrbs[j].x, skillOrbs[j].y);
+                        skillsCtx.stroke();
+                    }
+                }
+            }
+        }
 
         function animateSkills() {
             skillsCtx.clearRect(0, 0, skillsCanvas.width, skillsCanvas.height);
@@ -525,6 +625,7 @@
                 orb.update();
                 orb.draw();
             });
+            connectSkills();
             requestAnimationFrame(animateSkills);
         }
 
@@ -543,9 +644,38 @@
             document.getElementById('skill-info').textContent = info;
         });
 
+        skillsCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const rect = skillsCanvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const touchX = touch.clientX - rect.left;
+            const touchY = touch.clientY - rect.top;
+            let info = '';
+            skillOrbs.forEach(orb => {
+                const dx = touchX - orb.x;
+                const dy = touchY - orb.y;
+                if (Math.sqrt(dx * dx + dy * dy) < orb.radius) {
+                    info = `${orb.name}: ${orb.level}% proficiency`;
+                }
+            });
+            document.getElementById('skill-info').textContent = info;
+        });
+
         animateSkills();
 
-        // Scroll progress bar
+        // Scroll progress bar and section animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.section-animate').forEach(section => {
+            observer.observe(section);
+        });
+
         window.addEventListener('scroll', () => {
             const progressBar = document.getElementById('progress-bar');
             const scrollTop = window.scrollY;
@@ -569,21 +699,10 @@
             document.querySelectorAll('.text-gray-100').forEach(el => {
                 el.classList.toggle('text-gray-900');
             });
+            document.querySelectorAll('.text-[#E6E6E6]').forEach(el => {
+                el.classList.toggle('text-[#1C2526]');
+            });
             themeToggle.textContent = document.body.classList.contains('light-theme') ? 'Dark' : 'Light';
-        });
-
-        // Custom cursor
-        const cursor = document.getElementById('custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-        });
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.matches('a, button, input, textarea')) {
-                cursor.classList.add('active');
-            } else {
-                cursor.classList.remove('active');
-            }
         });
 
         // Hamburger menu
@@ -591,6 +710,26 @@
         const navMenu = document.getElementById('nav-menu');
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+        });
+
+        // Contact form persistence
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message'),
+                timestamp: new Date().toISOString()
+            };
+            let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            messages.push(data);
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+            formMessage.classList.remove('hidden');
+            setTimeout(() => formMessage.classList.add('hidden'), 3000);
+            contactForm.reset();
         });
 
         // AI Chatbot with voice input
