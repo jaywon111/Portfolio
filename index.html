@@ -3,843 +3,638 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay | Portfolio</title>
+    <title>JAY | Full-Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        :root {
+    --primary: #2C5282; 
+    --primary-dark: #1A3152; 
+    --secondary: #B2A4FF; 
+    --dark: #1A202C; 
+    --light: #F7FAFC;
+    --accent: #D69E2E; 
         }
-        @keyframes dramaticEnter {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+         body {
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
+    background-color: var(--light);
+    color: #1A202C; 
+    }   
+.dark {
+    background-color: var(--dark);
+    color: var(--light);
+    }
+     nav {
+            background-color: rgba(247, 250, 252, 0.95);
         }
-        @keyframes pulseText {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+        .dark nav {
+            background-color: rgba(26, 32, 44, 0.95);
         }
-        @keyframes pulse {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(0); }
+        nav a {
+            color: #1A202C;
         }
-        @keyframes floatText {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .dark nav a {
+            color: var(--light);
         }
-        @keyframes blink {
-            50% { border-right-color: transparent; }
+        nav a:hover {
+            color: var(--secondary);
         }
-        @keyframes bounceIn {
-            0% { transform: scale(0); }
-            60% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        
+        .bg-primary {
+            background-color: var(--primary);
         }
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 8px rgba(94, 234, 212, 0.5); }
-            50% { box-shadow: 0 0 16px rgba(94, 234, 212, 0.7); }
-            100% { box-shadow: 0 0 8px rgba(94, 234, 212, 0.5); }
+        .dark .bg-primary {
+            background-color: var(--secondary);
         }
-        @keyframes headerGlow {
-            0% { text-shadow: 0 0 5px rgba(94, 234, 212, 0.5); }
-            50% { text-shadow: 0 0 15px rgba(94, 234, 212, 0.8); }
-            100% { text-shadow: 0 0 5px rgba(94, 234, 212, 0.5); }
+        .hover\:bg-primary-dark:hover {
+            background-color: var(--primary-dark);
         }
-        @keyframes cardRotate {
-            0% { transform: rotate(0deg); }
-            50% { transform: rotate(2deg); }
-            100% { transform: rotate(0deg); }
+        .dark .hover\:bg-primary-dark:hover {
+            background-color: var(--accent);
         }
-        .gradient-text {
-            background: linear-gradient(45deg, #FFD700, #94E4D4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .text-primary {
+            color: var(--primary);
         }
-        .holo-glow {
-            box-shadow: 0 0 12px rgba(94, 234, 212, 0.4), 0 0 20px rgba(255, 215, 0, 0.3);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        .dark .text-primary {
+            color: var(--secondary);
         }
-        .holo-glow:hover {
-            box-shadow: 0 0 20px rgba(94, 234, 212, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
-            transform: scale(1.03);
+        .hover\:text-primary:hover {
+            color: var(--secondary);
         }
-        .social-icon {
+        .dark .hover\:text-primary:hover {
+            color: var(--accent);
+        }
+        .border-primary {
+            border-color: var(--primary);
+        }
+        .dark .border-primary {
+            border-color: var(--secondary);
+        }
+        
+        #skills, #experience {
+            background: linear-gradient(to bottom, rgba(247, 250, 252, 0.8), var(--light));
+        }
+        .dark #skills, .dark #experience {
+            background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), var(--dark));
+        }
+        
+        .tech-stack i {
+            color: var(--accent);
+        }
+        
+        #themeToggle {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        .dark #themeToggle {
+            background-color: var(--dark);
+            color: var(--accent);
+        }
+        
+        .mt-8 .fa-brands {
+            color: var(--primary);
+        }
+        .dark .mt-8 .fa-brands {
+            color: var(--secondary);
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary);
+        }
+        
+        .absolute.w-4.h-4.bg-primary {
+            background-color: var(--primary);
+        }
+        .dark .absolute.w-4.h-4.bg-primary {
+            background-color: var(--secondary);
+        }
+        
+        .bg-primary\/10 {
+            background-color: rgba(44, 82, 130, 0.1);
+        }
+        .dark .bg-primary\/10 {
+            background-color: rgba(178, 164, 255, 0.1);
+        }
+        
+        .tech-stack {
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .typewriter {
+            border-right: 3px solid var(--secondary);
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--secondary); }
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .nav-link {
             position: relative;
         }
-        .social-icon:hover::after {
-            content: attr(data-tooltip);
+        
+        .nav-link::after {
+            content: '';
             position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #2E3B3E;
-            color: #E6E6E6;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            z-index: 10;
-        }
-        .section-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .section-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        html {
-            scroll-behavior: smooth;
-            overscroll-behavior: none;
-        }
-        body {
-            overscroll-behavior: none;
-            min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #1C2526, #2E3B3E, #4A6366);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            transition: background 0.5s ease;
-        }
-        body.light-theme {
-            background: linear-gradient(135deg, #A3BFFA, #90A4AE, #78909C);
-        }
-        #particle-canvas {
-            position: fixed;
-            top: 0;
+            bottom: -2px;
             left: 0;
-            width: 100vw;
-            height: 100%;
-            z-index: 1;
-            background: transparent;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
         }
-        #skills-canvas {
+        
+        .nav-link:hover::after {
             width: 100%;
-            height: 400px;
-            z-index: 2;
-        }
-        #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(to right, #FFD700, #94E4D4);
-            z-index: 1000;
-            transition: width 0.2s ease;
-        }
-        .parallax {
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-        }
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        .chatbot-bubble {
-            background: #2E3B3E;
-            border-radius: 15px;
-            padding: 10px;
-            color: #E6E6E6;
-            max-width: 300px;
-            margin-bottom: 10px;
-            display: none;
-        }
-        .chatbot-input {
-            background: #2E3B3E;
-            border: none;
-            padding: 10px;
-            border-radius: 10px;
-            color: #E6E6E6;
-            width: 200px;
-        }
-        #theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2E3B3E;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #E6E6E6;
-            font-size: 12px;
-            z-index: 1000;
-            cursor: pointer;
-        }
-        #nav-toggle {
-            display: none;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: #2E3B3E;
-            padding: 10px;
-            border-radius: 5px;
-            color: #E6E6E6;
-            cursor: pointer;
-        }
-        #nav-menu {
-            display: flex;
-        }
-        .timeline-item {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        h2.gradient-text {
-            animation: headerGlow 2s infinite;
-        }
-        .project-card {
-            animation: cardRotate 4s infinite;
-        }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-            h3 {
-                font-size: 1.5rem;
-            }
-            p, a, input, textarea, button {
-                font-size: 0.9rem;
-            }
-            nav {
-                top: 60px;
-                background: #2E3B3E;
-                padding: 8px;
-            }
-            #nav-toggle {
-                display: block;
-            }
-            #nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: #2E3B3E;
-                padding: 8px 15px;
-                margin: 0;
-            }
-            #nav-menu.active {
-                display: flex;
-            }
-            #nav-menu li {
-                margin: 2px 0;
-            }
-            .project-card {
-                margin: 0 10px;
-                padding: 12px;
-            }
-            #skills-canvas {
-                height: 350px;
-            }
-            .chatbot-container {
-                bottom: 15px;
-                right: 15px;
-            }
-            .chatbot-input {
-                width: 160px;
-                padding: 8px;
-            }
-            .chatbot-bubble {
-                max-width: 220px;
-                font-size: 0.85rem;
-            }
-            .parallax {
-                background-attachment: scroll;
-            }
-            #theme-toggle {
-                width: 40px;
-                height: 40px;
-                font-size: 10px;
-            }
-            .timeline-item {
-                padding: 10px;
-                margin: 0 8px;
-            }
-            #about, #contact {
-                margin: 0 10px;
-                padding: 12px;
-            }
-            .contact form {
-                padding: 0 8px;
-            }
-            .contact .flex {
-                flex-direction: column;
-                align-items: center;
-                gap: 6px;
-            }
-            body, #particle-canvas {
-                width: 100vw;
-                min-height: 100vh;
-            }
-            .social-icon:hover::after {
-                top: -25px;
-                font-size: 0.7rem;
-            }
-        }
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            h2 {
-                font-size: 1.75rem;
-            }
-            h3 {
-                font-size: 1.25rem;
-            }
-            p, a, input, textarea, button {
-                font-size: 0.8rem;
-            }
-            #skills-canvas {
-                height: 250px;
-            }
-            .chatbot-input {
-                width: 120px;
-                padding: 6px;
-            }
-            .chatbot-bubble {
-                max-width: 180px;
-                font-size: 0.75rem;
-            }
-            #theme-toggle {
-                width: 35px;
-                height: 35px;
-                font-size: 9px;
-            }
-            .timeline-item {
-                padding: 8px;
-                margin: 0 5px;
-            }
-            #about, #contact {
-                margin: 0 8px;
-                padding: 10px;
-            }
-            .social-icon:hover::after {
-                top: -20px;
-                font-size: 0.6rem;
-            }
         }
     </style>
 </head>
-<body class="font-['Poppins'] leading-relaxed text-gray-100">
-    <div id="progress-bar" class="w-0"></div>
-    <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full z-[1] pointer-events-none"></canvas>
-    <div id="theme-toggle" class="holo-glow">Dark</div>
-    <button id="nav-toggle" class="holo-glow">☰</button>
-    <nav class="fixed top-0 w-full bg-[#2E3B3E]/90 backdrop-blur-sm p-6 shadow-[0_2px_15px_rgba(0,0,0,0.3)] z-[900]">
-        <ul id="nav-menu" class="flex justify-center gap-10">
-            <li><a href="#home" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Home</a></li>
-            <li><a href="#about" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">About</a></li>
-            <li><a href="#skills" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Skills</a></li>
-            <li><a href="#projects" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Projects</a></li>
-            <li><a href="#contact" class="text-gray-100 hover:text-[#94E4D4] font-semibold text-lg transition-colors">Contact</a></li>
-        </ul>
+<body class="text-gray-800 dark:text-gray-100">
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-40 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">JAY</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-primary transition">About</a>
+                <a href="#skills" class="hover:text-primary transition">Skills</a>
+                <a href="#projects" class="hover:text-primary transition">Projects</a>
+                <a href="#experience" class="hover:text-primary transition">Experience</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
+            </div>
+            <button class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-[var(--light)] dark:bg-[var(--dark)] shadow-lg z-50 p-6">
+            <button id="closeMenuBtn" class="absolute top-4 right-4 text-[var(--primary)] dark:text-[var(--secondary)]">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="flex flex-col space-y-4 mt-12">
+                <a href="#about" class="nav-link text-lg hover:text-primary transition">About</a>
+                <a href="#skills" class="nav-link text-lg hover:text-primary transition">Skills</a>
+                <a href="#projects" class="nav-link text-lg hover:text-primary transition">Projects</a>
+                <a href="#experience" class="nav-link text-lg hover:text-primary transition">Experience</a>
+                <a href="#contact" class="nav-link text-lg hover:text-primary transition">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <main class="mt-24 z-[2]">
-        <section id="home" class="min-h-screen flex flex-col items-center justify-center relative animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?space')">
-            <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(94,234,212,0.1)_0%,transparent_70%)] animate-[pulse_5s_infinite]"></div>
-            <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4 animate-[floatText_3s_ease-in-out_infinite] z-10">Hi, I'm Jay!</h1>
-            <p id="typing-text" class="text-xl md:text-2xl text-[#E6E6E6] z-10 border-r-4 border-[#94E4D4] animate-[blink_0.7s_infinite]"></p>
-        </section>
-
-        <section id="about" class="min-h-screen flex flex-col items-center justify-center bg-[#2E3B3E]/90 rounded-[20px] max-w-3xl mx-auto p-12 animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?tech')">
-            <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">About Me</h2>
-            <div class="timeline flex flex-col gap-8 w-full">
-                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
-                    <h3 class="text-xl font-semibold gradient-text">January, 2025: Started Coding</h3>
-                    <p class="text-[#E6E6E6]">Began my journey with HTML and CSS, building my first static websites.</p>
-                </div>
-                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
-                    <h3 class="text-xl font-semibold gradient-text">February-March: Mastered JavaScript</h3>
-                    <p class="text-[#E6E6E6]">Dived into JavaScript, creating interactive web apps like JAY'S To-Do.</p>
-                </div>
-                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
-                    <h3 class="text-xl font-semibold gradient-text">April-May: Explored Node.js</h3>
-                    <p class="text-[#E6E6E6]">Started learning back-end development with Node.js to build APIs.</p>
-                </div>
-                <div class="timeline-item bg-[#3A4A4D]/80 backdrop-blur-lg p-6 rounded-[15px] holo-glow">
-                    <h3 class="text-xl font-semibold gradient-text">June-July: Learnt React.js</h3>
-                    <p class="text-[#E6E6E6]">Aiming to expand skills in React and beyond!</p>
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    Hi, I'm <span class="text-primary">JAY!</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 typewriter">
+                    Full-Stack Developer!
+                </h2>
+                <p class="text-lg mb-8 leading-relaxed">
+                    I build scalable web applications with cutting-edge technologies. My passion lies in creating seamless user experiences powered by robust backend systems.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="px-6 py-3 bg-primary text-[var --light] rounded-lg hover:bg-primary-dark transition shadow-lg">
+                        Get In Touch
+                    </a>
+                    <a href="#projects" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
+                        View Projects
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <section id="skills" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] section-animate">
-            <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">My Skills</h2>
-            <canvas id="skills-canvas" class="holo-glow"></canvas>
-            <p id="skill-info" class="text-lg text-[#E6E6E6] mt-4"></p>
-        </section>
-
-        <section id="projects" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?code')">
-            <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-12">My Projects</h2>
-            <div class="grid grid-cols-1 gap-10 mt-12 max-w-6xl w-full px-6">
-                <div class="project-card bg-[#3A4A4D]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
-                    <h3 class="text-2xl font-semibold gradient-text mb-4">JAY'S To-Do</h3>
-                    <p class="text-[#E6E6E6] text-base mb-4">A futuristic To-Do List app with glassmorphism design, featuring task persistence, glow animations, and a cosmic UI. Built with HTML, JavaScript, and Tailwind CSS.</p>
-                    <div class="flex gap-4">
-                        <a href="https://jaywon111.github.io/JAY-S-To-Do/" target="_blank" class="px-4 py-2 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-lg hover:from-[#E6C200] hover:to-[#80D0C0] transition-all holo-glow">Visit App</a>
-                        <a href="https://github.com/jaywon111/JAY-S-To-Do" target="_blank" class="px-4 py-2 bg-[#4A6366] text-[#E6E6E6] rounded-lg hover:bg-[#3A4A4D] transition-all">Source Code</a>
-                    </div>
+            <div class="md:w-1/2 flex justify-center relative">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/10 absolute -z-10 top-4 left-4 animate-pulse"></div>
+                    <!-- <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/190dbd86-3763-4dea-a134-eea3e7f84003.png" alt=""  -->
+                         <!-- class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl"> -->
                 </div>
-                <div class="project-card bg-[#3A4A4D]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
-                    <h3 class="text-2xl font-semibold gradient-text mb-4">Responsive Landing Page - MY PORTFOLIO</h3>
-                    <p class="text-[#E6E6E6] text-base mb-4">A stunning landing page showcasing advanced CSS techniques and responsiveness.</p>
-                    <div class="flex gap-4">
-                        <a href="#" target="_blank" class="px-4 py-2 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-lg hover:from-[#E6C200] hover:to-[#80D0C0] transition-all holo-glow">Visit App</a>
-                        <a href="#" target="_blank" class="px-4 py-2 bg-[#4A6366] text-[#E6E6E6] rounded-lg hover:bg-[#3A4A4D] transition-all">Source Code</a>
-                    </div>
-                </div>
-                <div class="project-card bg-[#3A4A4D]/80 backdrop-blur-lg p-8 rounded-[20px] shadow-[0_6px_20px_rgba(0,0,0,0.4)] animate-[bounceIn_0.5s_ease-out] holo-glow" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true">
-                    <h3 class="text-2xl font-semibold gradient-text mb-4">Portfolio API</h3>
-                    <p class="text-[#E6E6E6] text-base mb-4">A back-end API project (in progress) to power this portfolio with Node.js.</p>
-                    <div class="flex gap-4">
-                        <a href="#" target="_blank" class="px-4 py-2 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-lg hover:from-[#E6C200] hover:to-[#80D0C0] transition-all holo-glow">Visit App</a>
-                        <a href="#" target="_blank" class="px-4 py-2 bg-[#4A6366] text-[#E6E6E6] rounded-lg hover:bg-[#3A4A4D] transition-all">Source Code</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">My <span class="text-primary">Skills</span></h2>
+            
+            <div class="overflow-hidden mb-16">
+                <h3 class="text-xl text-center mb-6">Tech Stack</h3>
+                <div class="flex items-center">
+                    <div class="w-full whitespace-nowrap">
+                        <div class="tech-stack flex whitespace-nowrap space-x-12">
+                            <div class="flex space-x-12">
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-react text-5xl text-blue-500 mb-2"></i>
+                                    <span>React</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-node-js text-5xl text-green-600 mb-2"></i>
+                                    <span>Node.js</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-python text-5xl text-blue-700 mb-2"></i>
+                                    <span>Python</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fas fa-database text-5xl text-yellow-500 mb-2"></i>
+                                    <span>MongoDB</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-aws text-5xl text-orange-500 mb-2"></i>
+                                    <span>AWS</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-docker text-5xl text-blue-400 mb-2"></i>
+                                    <span>Docker</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-git-alt text-5xl text-red-500 mb-2"></i>
+                                    <span>Git</span>
+                                </div>
+                            </div>
+                            <div class="flex space-x-12">
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-react text-5xl text-blue-500 mb-2"></i>
+                                    <span>React</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-node-js text-5xl text-green-600 mb-2"></i>
+                                    <span>Node.js</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-python text-5xl text-blue-700 mb-2"></i>
+                                    <span>Python</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fas fa-database text-5xl text-yellow-500 mb-2"></i>
+                                    <span>MongoDB</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-aws text-5xl text-orange-500 mb-2"></i>
+                                    <span>AWS</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-docker text-5xl text-blue-400 mb-2"></i>
+                                    <span>Docker</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-git-alt text-5xl text-red-500 mb-2"></i>
+                                    <span>Git</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="contact" class="min-h-screen flex flex-col items-center justify-center animate-[fadeIn_1s_ease_forwards] parallax section-animate" style="background-image: url('https://source.unsplash.com/random/1920x1080/?contact')">
-            <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">Contact Me</h2>
-            <form id="contact-form" class="flex flex-col gap-6 w-full max-w-xl">
-                <input type="text" name="name" placeholder="Your Name" required class="p-4 bg-[#3A4A4D]/80 border-none border border-[#E6E6E6]/20 rounded-[15px] text-[#E6E6E6] text-base focus:outline-none focus:shadow-[0_0_20px_rgba(94,234,212,0.5)] transition-all holo-glow">
-                <input type="email" name="email" placeholder="Your Email" required class="p-4 bg-[#3A4A4D]/80 border-none border border-[#E6E6E6]/20 rounded-[15px] text-[#E6E6E6] text-base focus:outline-none focus:shadow-[0_0_20px_rgba(94,234,212,0.5)] transition-all holo-glow">
-                <textarea name="message" placeholder="Your Message" required class="p-4 bg-[#3A4A4D]/80 border-none border border-[#E6E6E6]/20 rounded-[15px] text-[#E6E6E6] text-base focus:outline-none focus:shadow-[0_0_20px_rgba(94,234,212,0.5)] transition-all min-h-[150px] resize-y holo-glow"></textarea>
-                <button type="submit" class="p-4 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-[15px] font-semibold text-base hover:from-[#E6C200] hover:to-[#80D0C0] hover:scale-105 transition-all holo-glow">Send Message</button>
-            </form>
-            <p id="form-message" class="text-[#E6E6E6] mt-4 hidden">Message saved! Thank you for reaching out.</p>
-            <div class="flex gap-6 mt-8">
-                <a href="https://github.com/jaywon111" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="GitHub"><i class="fab fa-github fa-2x"></i></a>
-                <a href="[INSERT YOUR WHATSAPP LINK HERE]" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="WhatsApp"><i class="fab fa-whatsapp fa-2x"></i></a>
-                <a href="[INSERT YOUR DISCORD URL HERE]" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="Discord"><i class="fab fa-discord fa-2x"></i></a>
-                <a href="tel:+2348163324132" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="Phone"><i class="fas fa-phone fa-2x"></i></a>
-                <a href="https://x.com/catrotangold" target="_blank" class="social-icon text-[#E6E6E6] hover:text-[#94E4D4] text-lg holo-glow" data-tooltip="X"><i class="fab fa-x-twitter fa-2x"></i></a>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend Card -->
+                <div class="skill-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
+                        <i class="fas fa-laptop-code text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Building responsive, accessible UIs with React, Next.js, and modern CSS frameworks.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">React</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">TypeScript</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Tailwind</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Redux</span>
+                    </div>
+                </div>
+                
+                <!-- Backend Card -->
+                <div class="skill-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
+                        <i class="fas fa-server text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Backend Development</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Developing scalable microservices and APIs with Node.js, Python, and cloud services.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Node.js</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Express</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">GraphQL</span>
+                    </div>
+                </div>
+                
+                <!-- DevOps Card -->
+                <div class="skill-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
+                        <i class="fas fa-cloud text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">DevOps & Cloud</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Implementing CI/CD pipelines, containerization, and cloud infrastructure on AWS.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">AWS</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Docker</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Kubernetes</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Terraform</span>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <div class="chatbot-container">
-        <button id="chatbot-toggle" class="p-3 bg-gradient-to-r from-[#FFD700] to-[#94E4D4] text-[#1C2526] rounded-full holo-glow">Chat with AI</button>
-        <button id="voice-toggle" class="p-3 bg-gradient-to-r from-[#94E4D4] to-[#FFD700] text-[#1C2526] rounded-full holo-glow ml-2">Voice</button>
-        <div id="chatbot-bubble" class="chatbot-bubble"></div>
-        <input id="chatbot-input" class="chatbot-input" placeholder="Ask about my portfolio...">
-    </div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured <span class="text-primary">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1ad106a7-49b7-474b-af08-7b45a6395abe.png" alt="Dashboard interface of a SaaS platform with charts and metrics displayed" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CloudSaaS Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A comprehensive SaaS dashboard built with React, Node.js, and MongoDB for cloud service management.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">React</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">MongoDB</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">AWS</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-primary hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/52c07604-098d-4b9a-bd9e-68face153de7.png" alt="Mobile application for e-commerce showing product listings with a clean interface" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-Commerce Mobile App</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Cross-platform e-commerce application built with React Native and Firebase.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Redux</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-primary hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5291ab16-ddde-4daf-955e-566d67b480d5.png" alt="DevOps pipeline diagram showing CI/CD workflow with containerization" 
+                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Automated Dev Pipeline</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Kubernetes-based CI/CD pipeline automating testing and deployment for microservices.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Kubernetes</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Docker</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Jenkins</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">AWS EC2</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <a href="#" class="text-primary hover:underline flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-primary flex items-center">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // Particle effect with starfield connections and click interaction
-        const particleCanvas = document.getElementById('particle-canvas');
-        const particleCtx = particleCanvas.getContext('2d');
-        let gravityWell = null;
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Work <span class="text-primary">Experience</span></h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Experience 1 -->
+                <div class="timeline-item relative pl-10 pb-10">
+                    <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Senior Full-Stack Developer</h3>
+                            <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">November 2024 - Present</span>
+                        </div>
+                        <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">TechCorp Solutions</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Led a team of 5 developers to build a scalable SaaS platform serving 50K+ users</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Implemented microservices architecture reducing API response time by 60%</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Designed CI/CD pipeline reducing deployment time from 30 minutes to under 5</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item relative pl-10 pb-10">
+                    <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Frontend Developer</h3>
+                            <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">December 2024 - July 2025</span>
+                        </div>
+                        <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">Digital Innovations</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Developed React components</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Optimized web performance</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Mentored junior developers in modern JavaScript patterns</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="timeline-item relative pl-10 pb-10">
+                    <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
+                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Backend Developer</h3>
+                            <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">February 2025 - Present</span>
+                        </div>
+                        <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">WebSystems Ltd</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Built RESTful APIs handling 1M+ requests daily with Node.js</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Implemented real-time features with WebSockets</span>
+                            </li>
+                            <li class="flex">
+                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <span>Designed database schemas for high-performance applications</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        function resizeParticleCanvas() {
-            particleCanvas.width = window.innerWidth;
-            particleCanvas.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-            particleCanvas.style.width = '100vw';
-            particleCanvas.style.height = '100%';
-        }
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Get In <span class="text-primary">Touch</span></h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Let's talk about your project</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Have a project in mind or want to discuss potential opportunities? Feel free to reach out - I'm always open to new challenges and collaborations.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <span>jayjaywon01@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <span>+2348163324132</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <span>IBADAN, NG</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <form class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg" id="contact-form">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600">
+                    </div>
+                    <div class="mb-4">
+                        <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                        <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+                <p id="form-message" class="text-[#E6E6E6] mt-4 hidden">Message saved! Thank you for reaching out.</p>
+            </div>
+        </div>
+    </section>
 
-        window.addEventListener('resize', resizeParticleCanvas);
-        resizeParticleCanvas();
-
-        const isMobile = window.innerWidth <= 768;
-        const numberOfParticles = isMobile ? 30 : 75;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * particleCanvas.width;
-                this.y = Math.random() * particleCanvas.height;
-                this.size = Math.random() * (isMobile ? 4 : 6) + 2;
-                this.speedX = Math.random() * 2 - 1;
-                this.speedY = Math.random() * 2 - 1;
-                this.color = `hsl(${Math.random() * 60 + 180}, 50%, 60%)`;
-                this.baseSpeedX = this.speedX;
-                this.baseSpeedY = this.speedY;
-            }
-
-            update() {
-                if (gravityWell) {
-                    const dx = gravityWell.x - this.x;
-                    const dy = gravityWell.y - this.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        const force = (100 - distance) / 100;
-                        this.speedX += (dx / distance) * force * 0.05;
-                        this.speedY += (dy / distance) * force * 0.05;
-                    } else {
-                        this.speedX = this.baseSpeedX;
-                        this.speedY = this.baseSpeedY;
-                    }
-                }
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > particleCanvas.width) this.speedX = -this.speedX;
-                if (this.y < 0 || this.y > particleCanvas.height) this.speedY = -this.speedY;
-            }
-
-            draw() {
-                particleCtx.fillStyle = this.color;
-                particleCtx.beginPath();
-                particleCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                particleCtx.fill();
-            }
-        }
-
-        const particlesArray = [];
-        function initParticles() {
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function connectParticles() {
-            for (let i = 0; i < particlesArray.length; i++) {
-                for (let j = i + 1; j < particlesArray.length; j++) {
-                    const dx = particlesArray[i].x - particlesArray[j].x;
-                    const dy = particlesArray[i].y - particlesArray[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < (isMobile ? 80 : 100)) {
-                        particleCtx.strokeStyle = `rgba(94, 234, 212, ${0.7 - distance / (isMobile ? 80 : 100)})`;
-                        particleCtx.lineWidth = 1;
-                        particleCtx.beginPath();
-                        particleCtx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                        particleCtx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                        particleCtx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            connectParticles();
-            requestAnimationFrame(animateParticles);
-        }
-
-        particleCanvas.addEventListener('click', (e) => {
-            gravityWell = { x: e.clientX, y: e.clientY };
-            setTimeout(() => { gravityWell = null; }, 1000);
-        });
-
-        particleCanvas.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            const touch = e.touches[0];
-            gravityWell = { x: touch.clientX, y: touch.clientY };
-            setTimeout(() => { gravityWell = null; }, 1000);
-        });
-
-        initParticles();
-        animateParticles();
-
-        // Skills visualizer
-        const skillsCanvas = document.getElementById('skills-canvas');
-        const skillsCtx = skillsCanvas.getContext('2d');
-        skillsCanvas.width = window.innerWidth;
-        skillsCanvas.height = window.innerWidth <= 768 ? 350 : 400;
-
-        const skills = [
-            { name: 'HTML', level: 90, x: window.innerWidth * 0.15, y: 100, color: '#DAA520' },
-            { name: 'CSS', level: 85, x: window.innerWidth * 0.35, y: 150, color: '#5EEAD4' },
-            { name: 'JavaScript', level: 80, x: window.innerWidth * 0.55, y: 120, color: '#FFD700' },
-            { name: 'Node.js', level: 60, x: window.innerWidth * 0.25, y: 250, color: '#4A6366' },
-            { name: 'React', level: 50, x: window.innerWidth * 0.45, y: 200, color: '#94E4D4' }
-        ];
-
-        class SkillOrb {
-            constructor(skill) {
-                this.name = skill.name;
-                this.level = skill.level;
-                this.x = skill.x;
-                this.y = skill.y;
-                this.color = skill.color;
-                this.radius = skill.level / (window.innerWidth <= 768 ? 4 : 2.5);
-                this.angle = Math.random() * Math.PI * 2;
-            }
-
-            update() {
-                this.angle += 0.02;
-                this.y += Math.sin(this.angle) * 0.5;
-            }
-
-            draw() {
-                skillsCtx.fillStyle = this.color;
-                skillsCtx.beginPath();
-                skillsCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                skillsCtx.fill();
-                skillsCtx.fillStyle = '#E6E6E6';
-                skillsCtx.font = window.innerWidth <= 768 ? '10px Poppins' : '14px Poppins';
-                skillsCtx.textAlign = 'center';
-                skillsCtx.fillText(this.name, this.x, this.y + this.radius + 15);
-            }
-        }
-
-        const skillOrbs = skills.map(skill => new SkillOrb(skill));
-
-        function connectSkills() {
-            for (let i = 0; i < skillOrbs.length; i++) {
-                for (let j = i + 1; j < skillOrbs.length; j++) {
-                    const dx = skillOrbs[i].x - skillOrbs[j].x;
-                    const dy = skillOrbs[i].y - skillOrbs[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < (isMobile ? 100 : 150)) {
-                        skillsCtx.strokeStyle = `rgba(94, 234, 212, ${0.5 - distance / (isMobile ? 100 : 150)})`;
-                        skillsCtx.lineWidth = 1;
-                        skillsCtx.beginPath();
-                        skillsCtx.moveTo(skillOrbs[i].x, skillOrbs[i].y);
-                        skillsCtx.lineTo(skillOrbs[j].x, skillOrbs[j].y);
-                        skillsCtx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateSkills() {
-            skillsCtx.clearRect(0, 0, skillsCanvas.width, skillsCanvas.height);
-            skillOrbs.forEach(orb => {
-                orb.update();
-                orb.draw();
-            });
-            connectSkills();
-            requestAnimationFrame(animateSkills);
-        }
-
-        skillsCanvas.addEventListener('mousemove', (e) => {
-            const rect = skillsCanvas.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
-            let info = '';
-            skillOrbs.forEach(orb => {
-                const dx = mouseX - orb.x;
-                const dy = mouseY - orb.y;
-                if (Math.sqrt(dx * dx + dy * dy) < orb.radius) {
-                    info = `${orb.name}: ${orb.level}% proficiency`;
-                }
-            });
-            document.getElementById('skill-info').textContent = info;
-        });
-
-        skillsCanvas.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            const rect = skillsCanvas.getBoundingClientRect();
-            const touch = e.touches[0];
-            const touchX = touch.clientX - rect.left;
-            const touchY = touch.clientY - rect.top;
-            let info = '';
-            skillOrbs.forEach(orb => {
-                const dx = touchX - orb.x;
-                const dy = touchY - orb.y;
-                if (Math.sqrt(dx * dx + dy * dy) < orb.radius) {
-                    info = `${orb.name}: ${orb.level}% proficiency`;
-                }
-            });
-            document.getElementById('skill-info').textContent = info;
-        });
-
-        animateSkills();
-
-        // Scroll progress bar and section animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.section-animate').forEach(section => {
-            observer.observe(section);
-        });
-
-        window.addEventListener('scroll', () => {
-            const progressBar = document.getElementById('progress-bar');
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progressBar.style.width = `${scrollPercent}%`;
-
-            // Timeline animation
-            document.querySelectorAll('.timeline-item').forEach(item => {
-                const rect = item.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.8) {
-                    item.classList.add('visible');
-                }
-            });
-        });
-
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            document.querySelectorAll('.text-gray-100').forEach(el => {
-                el.classList.toggle('text-gray-900');
-            });
-            document.querySelectorAll('.text-[#E6E6E6]').forEach(el => {
-                el.classList.toggle('text-[#1C2526]');
-            });
-            themeToggle.textContent = document.body.classList.contains('light-theme') ? 'Dark' : 'Light';
-        });
-
-        // Hamburger menu
-        const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Contact form persistence
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                message: formData.get('message'),
-                timestamp: new Date().toISOString()
-            };
-            let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-            messages.push(data);
-            localStorage.setItem('contactMessages', JSON.stringify(messages));
-            formMessage.classList.remove('hidden');
-            setTimeout(() => formMessage.classList.add('hidden'), 3000);
-            contactForm.reset();
-        });
-
-        // AI Chatbot with voice input
-        const chatbotResponses = {
-            'hi': 'Hey there! Welcome to Jay\'s portfolio. Ask me about his skills or projects!',
-            'skills': 'Jay is proficient in HTML, CSS, JavaScript, Node.js, and learning React. Check out the skills section for a cool visualization!',
-            'projects': 'Jay has built a Celestial To-Do app, a responsive landing page, and is working on a Portfolio API. Scroll to the projects section to see more!',
-            'who is jay': 'Jay is a passionate web developer aiming to raise 700k by October 2025 for his education. He loves creating modern, responsive websites!',
-            'default': 'I\'m not sure about that. Try asking about Jay\'s skills, projects, or goals!'
-        };
-
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const voiceToggle = document.getElementById('voice-toggle');
-        const chatbotBubble = document.getElementById('chatbot-bubble');
-        const chatbotInput = document.getElementById('chatbot-input');
-
-        chatbotToggle.addEventListener('click', () => {
-            chatbotBubble.style.display = chatbotBubble.style.display === 'block' ? 'none' : 'block';
-            chatbotInput.style.display = chatbotBubble.style.display;
-        });
-
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && chatbotInput.value.trim()) {
-                const userMessage = chatbotInput.value.trim().toLowerCase();
-                let response = chatbotResponses['default'];
-                Object.keys(chatbotResponses).forEach(key => {
-                    if (userMessage.includes(key)) {
-                        response = chatbotResponses[key];
-                    }
-                });
-                chatbotBubble.textContent = response;
-                chatbotBubble.style.display = 'block';
-                chatbotInput.value = '';
-            }
-        });
-
-        // Voice input
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
-
-        voiceToggle.addEventListener('click', () => {
-            recognition.start();
-            chatbotBubble.textContent = 'Listening...';
-            chatbotBubble.style.display = 'block';
-        });
-
-        recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript.toLowerCase();
-            let response = chatbotResponses['default'];
-            Object.keys(chatbotResponses).forEach(key => {
-                if (transcript.includes(key)) {
-                    response = chatbotResponses[key];
-                }
-            });
-            chatbotBubble.textContent = response;
-            chatbotInput.value = transcript;
-        };
-
-        recognition.onerror = () => {
-            chatbotBubble.textContent = 'Sorry, I couldn\'t hear you. Try again!';
-        };
-
-        // Portfolio functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const mainContent = document.querySelector('main');
-            const nav = document.querySelector('nav');
-            mainContent.classList.remove('hidden');
-            nav.classList.remove('hidden');
-
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const section = document.querySelector(anchor.getAttribute('href'));
-                    if (section) section.scrollIntoView({ behavior: 'smooth' });
-                    if (window.innerWidth <= 768) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            });
-
-            function startTypingAnimation() {
-                const typingElement = document.getElementById('typing-text');
-                if (!typingElement) return;
-                const text = 'Web Developer | Crafting Cutting-Edge Digital Experiences';
-                let index = 0;
-                function type() {
-                    if (index < text.length) {
-                        typingElement.textContent += text[index];
-                        index++;
-                        setTimeout(type, 100);
-                    } else {
-                        typingElement.style.borderRight = 'none';
-                    }
-                }
-                type();
-            }
-
-            startTypingAnimation();
-
-            // Initialize Vanilla Tilt only on non-mobile devices
-            if (!isMobile) {
-                VanillaTilt.init(document.querySelectorAll('.project-card'), {
-                    max: 15,
-                    speed: 400,
-                    glare: true,
-                    'max-glare': 0.5
-                });
-            }
-        });
-    </script>
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2025 JAY. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
