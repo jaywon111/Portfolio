@@ -6,26 +6,30 @@
     <title>JAY | Full-Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-    --primary: #2C5282; 
-    --primary-dark: #1A3152; 
-    --secondary: #B2A4FF; 
-    --dark: #1A202C; 
-    --light: #F7FAFC;
-    --accent: #D69E2E; 
+            --primary: #2C5282; 
+            --primary-dark: #1A3152; 
+            --secondary: #B2A4FF; 
+            --dark: #1A202C; 
+            --light: #F7FAFC;
+            --accent: #D69E2E; 
         }
-         body {
-    font-family: 'Inter', sans-serif;
-    transition: background 0.3s ease, color 0.3s ease;
-    background-color: var(--light);
-    color: #1A202C; 
-    }   
-.dark {
-    background-color: var(--dark);
-    color: var(--light);
-    }
-     nav {
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background 0.3s ease, color 0.3s ease;
+            background-color: var(--light);
+            color: #1A202C;
+        }
+        
+        .dark {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        nav {
             background-color: rgba(247, 250, 252, 0.95);
         }
         .dark nav {
@@ -180,27 +184,135 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        /* Media Queries for Smartphones */
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            #about {
+                padding-top: 4rem;
+                padding-bottom: 2rem;
+            }
+
+            #about h1 {
+                font-size: 2.5rem;
+            }
+
+            #about h2 {
+                font-size: 1.5rem;
+            }
+
+            #about p {
+                font-size: 1rem;
+            }
+
+            #about .flex.space-x-4 {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            #about .flex.space-x-4 a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .md\:w-1\/2 {
+                width: 100%;
+            }
+
+            .w-64.h-64.md\:w-80.md\:h-80 {
+                width: 12rem;
+                height: 12rem;
+            }
+
+            #skills, #experience, #projects, #contact {
+                padding: 2rem 0;
+            }
+
+            #skills h2, #projects h2, #experience h2, #contact h2 {
+                font-size: 1.75rem;
+            }
+
+            .tech-stack {
+                animation: none;
+            }
+
+            .tech-stack .flex.space-x-12 {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .tech-stack .flex.space-x-12 .flex {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card .h-48 {
+                height: 10rem;
+            }
+
+            .max-w-3xl {
+                max-width: 100%;
+            }
+
+            .max-w-4xl {
+                max-width: 100%;
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            #contact .flex.space-x-4 {
+                justify-content: center;
+            }
+
+            #messagesModal {
+                width: 90%;
+                max-height: 80vh;
+            }
+
+            .timeline-item::before {
+                left: -10px;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item .absolute.w-4.h-4 {
+                left: -2px;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-800 dark:text-gray-100">
     <!-- Theme Toggle -->
-    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg">
+    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full shadow-lg">
         <i class="fas fa-moon dark:hidden"></i>
         <i class="fas fa-sun hidden dark:block"></i>
     </button>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-40 shadow-sm">
+    <nav class="fixed top-0 left-0 right-0 backdrop-blur-md z-40 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-primary">JAY</a>
             <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-primary transition">About</a>
-                <a href="#skills" class="hover:text-primary transition">Skills</a>
-                <a href="#projects" class="hover:text-primary transition">Projects</a>
-                <a href="#experience" class="hover:text-primary transition">Experience</a>
-                <a href="#contact" class="hover:text-primary transition">Contact</a>
+                <a href="#about" class="nav-link hover:text-primary transition">About</a>
+                <a href="#skills" class="nav-link hover:text-primary transition">Skills</a>
+                <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
+                <a href="#experience" class="nav-link hover:text-primary transition">Experience</a>
+                <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
             </div>
-            <button class="md:hidden focus:outline-none">
+            <button id="mobileMenuBtn" class="md:hidden focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
@@ -224,7 +336,7 @@
         <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">
-                    Hi, I'm <span class="text-primary">JAY!</span>
+                    Hi, I'm <span class="text-primary dark:text-[var(--secondary)]">JAY!</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6 typewriter">
                     Full-Stack Developer!
@@ -233,7 +345,7 @@
                     I build scalable web applications with cutting-edge technologies. My passion lies in creating seamless user experiences powered by robust backend systems.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#contact" class="px-6 py-3 bg-primary text-[var --light] rounded-lg hover:bg-primary-dark transition shadow-lg">
+                    <a href="#contact" class="px-6 py-3 bg-primary text-[var(--light)] rounded-lg hover:bg-primary-dark transition shadow-lg">
                         Get In Touch
                     </a>
                     <a href="#projects" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
@@ -244,17 +356,17 @@
             <div class="md:w-1/2 flex justify-center relative">
                 <div class="relative">
                     <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/10 absolute -z-10 top-4 left-4 animate-pulse"></div>
-                    <!-- <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/190dbd86-3763-4dea-a134-eea3e7f84003.png" alt=""  -->
-                         <!-- class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-xl"> -->
+                    <img src="https://via.placeholder.com/400" alt="Professional headshot of JAY" 
+                         class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-[var(--light)] dark:border-[var(--dark)] shadow-xl">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="skills" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">My <span class="text-primary">Skills</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12">My <span class="text-primary dark:text-[var(--secondary)]">Skills</span></h2>
             
             <div class="overflow-hidden mb-16">
                 <h3 class="text-xl text-center mb-6">Tech Stack</h3>
@@ -263,61 +375,61 @@
                         <div class="tech-stack flex whitespace-nowrap space-x-12">
                             <div class="flex space-x-12">
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-react text-5xl text-blue-500 mb-2"></i>
+                                    <i class="fab fa-react text-5xl mb-2"></i>
                                     <span>React</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-node-js text-5xl text-green-600 mb-2"></i>
+                                    <i class="fab fa-node-js text-5xl mb-2"></i>
                                     <span>Node.js</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-python text-5xl text-blue-700 mb-2"></i>
+                                    <i class="fab fa-python text-5xl mb-2"></i>
                                     <span>Python</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fas fa-database text-5xl text-yellow-500 mb-2"></i>
+                                    <i class="fas fa-database text-5xl mb-2"></i>
                                     <span>MongoDB</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-aws text-5xl text-orange-500 mb-2"></i>
+                                    <i class="fab fa-aws text-5xl mb-2"></i>
                                     <span>AWS</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-docker text-5xl text-blue-400 mb-2"></i>
+                                    <i class="fab fa-docker text-5xl mb-2"></i>
                                     <span>Docker</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-git-alt text-5xl text-red-500 mb-2"></i>
+                                    <i class="fab fa-git-alt text-5xl mb-2"></i>
                                     <span>Git</span>
                                 </div>
                             </div>
                             <div class="flex space-x-12">
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-react text-5xl text-blue-500 mb-2"></i>
+                                    <i class="fab fa-react text-5xl mb-2"></i>
                                     <span>React</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-node-js text-5xl text-green-600 mb-2"></i>
+                                    <i class="fab fa-node-js text-5xl mb-2"></i>
                                     <span>Node.js</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-python text-5xl text-blue-700 mb-2"></i>
+                                    <i class="fab fa-python text-5xl mb-2"></i>
                                     <span>Python</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fas fa-database text-5xl text-yellow-500 mb-2"></i>
+                                    <i class="fas fa-database text-5xl mb-2"></i>
                                     <span>MongoDB</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-aws text-5xl text-orange-500 mb-2"></i>
+                                    <i class="fab fa-aws text-5xl mb-2"></i>
                                     <span>AWS</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-docker text-5xl text-blue-400 mb-2"></i>
+                                    <i class="fab fa-docker text-5xl mb-2"></i>
                                     <span>Docker</span>
                                 </div>
                                 <div class="flex flex-col items-center">
-                                    <i class="fab fa-git-alt text-5xl text-red-500 mb-2"></i>
+                                    <i class="fab fa-git-alt text-5xl mb-2"></i>
                                     <span>Git</span>
                                 </div>
                             </div>
@@ -327,54 +439,51 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Frontend Card -->
-                <div class="skill-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-all duration-300">
+                <div class="skill-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl p-6 shadow-lg transition-all duration-300">
                     <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
-                        <i class="fas fa-laptop-code text-3xl text-primary"></i>
+                        <i class="fas fa-laptop-code text-3xl text-primary dark:text-[var(--secondary)]"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">
                         Building responsive, accessible UIs with React, Next.js, and modern CSS frameworks.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">React</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">TypeScript</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Tailwind</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Redux</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">React</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">TypeScript</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Tailwind</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Redux</span>
                     </div>
                 </div>
                 
-                <!-- Backend Card -->
-                <div class="skill-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-all duration-300">
+                <div class="skill-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl p-6 shadow-lg transition-all duration-300">
                     <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
-                        <i class="fas fa-server text-3xl text-primary"></i>
+                        <i class="fas fa-server text-3xl text-primary dark:text-[var(--secondary)]"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Backend Development</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">
                         Developing scalable microservices and APIs with Node.js, Python, and cloud services.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Node.js</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Express</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Python</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">GraphQL</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Node.js</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Express</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">GraphQL</span>
                     </div>
                 </div>
                 
-                <!-- DevOps Card -->
-                <div class="skill-card bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg transition-all duration-300">
+                <div class="skill-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl p-6 shadow-lg transition-all duration-300">
                     <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
-                        <i class="fas fa-cloud text-3xl text-primary"></i>
+                        <i class="fas fa-cloud text-3xl text-primary dark:text-[var(--secondary)]"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">DevOps & Cloud</h3>
                     <p class="text-gray-600 dark:text-gray-300 mb-4">
                         Implementing CI/CD pipelines, containerization, and cloud infrastructure on AWS.
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">AWS</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Docker</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Kubernetes</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-sm">Terraform</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">AWS</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Docker</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Kubernetes</span>
+                        <span class="px-3 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-sm">Terraform</span>
                     </div>
                 </div>
             </div>
@@ -384,13 +493,12 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured <span class="text-primary">Projects</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Featured <span class="text-primary dark:text-[var(--secondary)]">Projects</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                <div class="project-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
                     <div class="relative overflow-hidden h-48">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1ad106a7-49b7-474b-af08-7b45a6395abe.png" alt="Dashboard interface of a SaaS platform with charts and metrics displayed" 
+                        <img src="https://via.placeholder.com/400x300" alt="Dashboard interface of a SaaS platform with charts and metrics displayed" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6">
@@ -399,26 +507,25 @@
                             A comprehensive SaaS dashboard built with React, Node.js, and MongoDB for cloud service management.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">React</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Node.js</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">MongoDB</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">AWS</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">React</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">MongoDB</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">AWS</span>
                         </div>
                         <div class="flex justify-between">
-                            <a href="#" class="text-primary hover:underline flex items-center">
+                            <a href="#" class="text-primary dark:text-[var(--secondary)] hover:text-[var(--accent)] flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Demo
                             </a>
-                            <a href="#" class="text-gray-500 hover:text-primary flex items-center">
+                            <a href="#" class="text-[var(--accent)] hover:text-[var(--secondary)] flex items-center">
                                 <i class="fab fa-github mr-2"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="project-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                <div class="project-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
                     <div class="relative overflow-hidden h-48">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/52c07604-098d-4b9a-bd9e-68face153de7.png" alt="Mobile application for e-commerce showing product listings with a clean interface" 
+                        <img src="https://via.placeholder.com/400x300" alt="Mobile application for e-commerce showing product listings with a clean interface" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6">
@@ -427,25 +534,24 @@
                             Cross-platform e-commerce application built with React Native and Firebase.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">React Native</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Firebase</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Redux</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">React Native</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">Firebase</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">Redux</span>
                         </div>
                         <div class="flex justify-between">
-                            <a href="#" class="text-primary hover:underline flex items-center">
+                            <a href="#" class="text-primary dark:text-[var(--secondary)] hover:text-[var(--accent)] flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Demo
                             </a>
-                            <a href="#" class="text-gray-500 hover:text-primary flex items-center">
+                            <a href="#" class="text-[var(--accent)] hover:text-[var(--secondary)] flex items-center">
                                 <i class="fab fa-github mr-2"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 3 -->
-                <div class="project-card bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                <div class="project-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
                     <div class="relative overflow-hidden h-48">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5291ab16-ddde-4daf-955e-566d67b480d5.png" alt="DevOps pipeline diagram showing CI/CD workflow with containerization" 
+                        <img src="https://via.placeholder.com/400x300" alt="DevOps pipeline diagram showing CI/CD workflow with containerization" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6">
@@ -454,16 +560,16 @@
                             Kubernetes-based CI/CD pipeline automating testing and deployment for microservices.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Kubernetes</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Docker</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">Jenkins</span>
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 rounded-full text-xs">AWS EC2</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">Kubernetes</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">Docker</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">Jenkins</span>
+                            <span class="px-2 py-1 bg-[#E2E8F0] dark:bg-[#4B5563] rounded-full text-xs">AWS EC2</span>
                         </div>
                         <div class="flex justify-between">
-                            <a href="#" class="text-primary hover:underline flex items-center">
+                            <a href="#" class="text-primary dark:text-[var(--secondary)] hover:text-[var(--accent)] flex items-center">
                                 <i class="fas fa-external-link-alt mr-2"></i> Live Demo
                             </a>
-                            <a href="#" class="text-gray-500 hover:text-primary flex items-center">
+                            <a href="#" class="text-[var(--accent)] hover:text-[var(--secondary)] flex items-center">
                                 <i class="fab fa-github mr-2"></i> Code
                             </a>
                         </div>
@@ -474,83 +580,80 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="experience" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Work <span class="text-primary">Experience</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Work <span class="text-primary dark:text-[var(--secondary)]">Experience</span></h2>
             
             <div class="max-w-3xl mx-auto">
-                <!-- Experience 1 -->
                 <div class="timeline-item relative pl-10 pb-10">
                     <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
-                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                    <div class="bg-[var(--light)] dark:bg-[var(--dark)] rounded-lg p-6 shadow-md">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold">Senior Full-Stack Developer</h3>
-                            <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">November 2024 - Present</span>
+                            <span class="bg-primary/10 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">November 2024 - Present</span>
                         </div>
                         <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">TechCorp Solutions</h4>
                         <ul class="space-y-2">
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Led a team of 5 developers to build a scalable SaaS platform serving 50K+ users</span>
                             </li>
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Implemented microservices architecture reducing API response time by 60%</span>
                             </li>
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Designed CI/CD pipeline reducing deployment time from 30 minutes to under 5</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 
-                <!-- Experience 2 -->
                 <div class="timeline-item relative pl-10 pb-10">
                     <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
-                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                    <div class="bg-[var(--light)] dark:bg-[var(--dark)] rounded-lg p-6 shadow-md">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold">Frontend Developer</h3>
-                            <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">December 2024 - July 2025</span>
+                            <span class="bg-primary/10 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">December 2024 - July 2025</span>
                         </div>
                         <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">Digital Innovations</h4>
                         <ul class="space-y-2">
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Developed React components</span>
                             </li>
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Optimized web performance</span>
                             </li>
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Mentored junior developers in modern JavaScript patterns</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 
-                <!-- Experience 3 -->
                 <div class="timeline-item relative pl-10 pb-10">
                     <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
-                    <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-md">
+                    <div class="bg-[var(--light)] dark:bg-[var(--dark)] rounded-lg p-6 shadow-md">
                         <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold">Backend Developer</h3>
-                            <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">February 2025 - Present</span>
+                            <span class="bg-primary/10 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">February 2025 - Present</span>
                         </div>
                         <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">WebSystems Ltd</h4>
                         <ul class="space-y-2">
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Built RESTful APIs handling 1M+ requests daily with Node.js</span>
                             </li>
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Implemented real-time features with WebSockets</span>
                             </li>
                             <li class="flex">
-                                <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                                <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
                                 <span>Designed database schemas for high-performance applications</span>
                             </li>
                         </ul>
@@ -563,7 +666,7 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Get In <span class="text-primary">Touch</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12">Get In <span class="text-primary dark:text-[var(--secondary)]">Touch</span></h2>
             
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
@@ -574,84 +677,122 @@
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-primary"></i>
+                                <i class="fas fa-envelope text-primary dark:text-[var(--secondary)]"></i>
                             </div>
                             <span>jayjaywon01@gmail.com</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone text-primary"></i>
+                                <i class="fas fa-phone text-primary dark:text-[var(--secondary)]"></i>
                             </div>
                             <span>+2348163324132</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-primary"></i>
+                                <i class="fas fa-map-marker-alt text-primary dark:text-[var(--secondary)]"></i>
                             </div>
                             <span>IBADAN, NG</span>
                         </div>
                     </div>
                     <div class="mt-8 flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#4B5563] flex items-center justify-center hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#4B5563] flex items-center justify-center hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-primary hover:text-white transition">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#4B5563] flex items-center justify-center hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
+                    <button id="viewMessagesBtn" class="mt-4 px-4 py-2 bg-primary text-[var(--light)] rounded-lg hover:bg-primary-dark transition">
+                        View Messages
+                    </button>
                 </div>
                 
-                <form class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg" id="contact-form">
+                <form class="bg-[var(--light)] dark:bg-[var(--dark)] p-6 rounded-xl shadow-lg" id="contact-form">
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600">
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required>
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600">
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required>
                     </div>
                     <div class="mb-4">
                         <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                        <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600">
+                        <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required>
                     </div>
                     <div class="mb-6">
                         <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:border-gray-600"></textarea>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition shadow-lg">
+                    <button type="submit" class="w-full bg-primary text-[var(--light)] py-3 rounded-lg hover:bg-primary-dark transition shadow-lg">
                         Send Message
                     </button>
+                    <p id="form-message" class="text-center mt-4 hidden text-[var(--accent)]">Message saved! Thank you for reaching out.</p>
                 </form>
-                <p id="form-message" class="text-[#E6E6E6] mt-4 hidden">Message saved! Thank you for reaching out.</p>
             </div>
         </div>
     </section>
 
+    <!-- Messages Modal -->
+    <div id="messagesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-[var(--light)] dark:bg-[var(--dark)] p-6 rounded-xl shadow-lg max-w-lg w-full overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Submitted Messages</h3>
+                <button id="closeMessagesBtn" class="text-[var(--primary)] dark:text-[var(--secondary)]">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="messagesList" class="space-y-4"></div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="py-8 bg-gray-900 text-white">
+    <footer class="py-8 bg-[var(--primary)] text-[var(--light)]">
         <div class="container mx-auto px-6 text-center">
-            <p>© 2025 JAY. All rights reserved.</p>
+            <p>&copy; 2025 JAY. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
-         // Theme toggle functionality
+        // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-        
-        // Check for saved theme preference or use preferred color scheme
-        if (localStorage.getItem('theme') === 'dark' || 
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        const viewMessagesBtn = document.getElementById('viewMessagesBtn');
+        const messagesModal = document.getElementById('messagesModal');
+        const closeMessagesBtn = document.getElementById('closeMessagesBtn');
+        const messagesList = document.getElementById('messagesList');
+
+        // Apply saved theme or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
         }
-        
+
+        // Toggle theme on button click
         themeToggle.addEventListener('click', () => {
             html.classList.toggle('dark');
             localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
         });
-        
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -659,22 +800,23 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                mobileMenu.classList.remove('open');
             });
         });
-        
+
         // Typewriter effect
         setTimeout(() => {
             document.querySelector('.typewriter').classList.remove('typewriter');
         }, 5000);
-         // Contact form persistence
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
+
+        // Contact form persistence
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const formData = new FormData(contactForm);
             const data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
+                subject: formData.get('subject'),
                 message: formData.get('message'),
                 timestamp: new Date().toISOString()
             };
@@ -684,6 +826,46 @@
             formMessage.classList.remove('hidden');
             setTimeout(() => formMessage.classList.add('hidden'), 3000);
             contactForm.reset();
+        });
+
+        // View messages
+        viewMessagesBtn.addEventListener('click', () => {
+            const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            messagesList.innerHTML = '';
+            if (messages.length === 0) {
+                messagesList.innerHTML = '<p class="text-gray-600 dark:text-gray-300">No messages yet.</p>';
+            } else {
+                messages.forEach((msg, index) => {
+                    const msgElement = document.createElement('div');
+                    msgElement.className = 'border-b border-gray-300 dark:border-gray-600 pb-2';
+                    msgElement.innerHTML = `
+                        <p><strong>Name:</strong> ${msg.name}</p>
+                        <p><strong>Email:</strong> ${msg.email}</p>
+                        <p><strong>Subject:</strong> ${msg.subject}</p>
+                        <p><strong>Message:</strong> ${msg.message}</p>
+                        <p><strong>Time:</strong> ${new Date(msg.timestamp).toLocaleString()}</p>
+                        <button class="delete-message text-[var(--primary)] dark:text-[var(--secondary)] hover:text-[var(--accent)] text-sm mt-2" data-index="${index}">Delete</button>
+                    `;
+                    messagesList.appendChild(msgElement);
+                });
+            }
+            messagesModal.classList.remove('hidden');
+        });
+
+        // Close messages modal
+        closeMessagesBtn.addEventListener('click', () => {
+            messagesModal.classList.add('hidden');
+        });
+
+        // Delete message
+        messagesList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-message')) {
+                const index = e.target.getAttribute('data-index');
+                let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                messages.splice(index, 1);
+                localStorage.setItem('contactMessages', JSON.stringify(messages));
+                viewMessagesBtn.click(); // Refresh the list
+            }
         });
     </script>
 </body>
