@@ -14,7 +14,7 @@
             --secondary: #B2A4FF; 
             --dark: #1A202C; 
             --light: #F7FAFC;
-            --accent: #D69E2E; 
+            --accent: #68D391; /* Emerald Green */
         }
         
         body {
@@ -52,10 +52,10 @@
             background-color: var(--secondary);
         }
         .hover\:bg-primary-dark:hover {
-            background-color: var(--primary-dark);
+            background: linear-gradient(45deg, var(--primary-dark), var(--secondary));
         }
         .dark .hover\:bg-primary-dark:hover {
-            background-color: var(--accent);
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
         }
         .text-primary {
             color: var(--primary);
@@ -76,31 +76,90 @@
             border-color: var(--secondary);
         }
         
-        #skills, #experience {
+        #about, #skills, #projects, #experience, #cv, #contact {
             background: linear-gradient(to bottom, rgba(247, 250, 252, 0.8), var(--light));
         }
-        .dark #skills, .dark #experience {
-            background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), var(--dark));
+        .dark #about, .dark #skills, .dark #projects, .dark #experience, .dark #cv, .dark #contact {
+            background: linear-gradient(to bottom, rgba(45, 55, 72, 0.8), #2D3748);
         }
         
         .tech-stack i {
             color: var(--accent);
         }
+        .dark .tech-stack i {
+            color: var(--accent);
+            filter: brightness(1.2);
+        }
         
         #themeToggle {
             background-color: var(--light);
             color: var(--primary);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.5);
         }
         .dark #themeToggle {
-            background-color: var(--dark);
+            background-color: #2D3748;
             color: var(--accent);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(255, 255, 255, 0.1);
+        }
+        #themeToggle:hover {
+            transform: scale(1.1);
         }
         
-        .mt-8 .fa-brands {
+        .social-btn {
+            background-color: var(--light);
             color: var(--primary);
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1), -3px -3px 6px rgba(255, 255, 255, 0.7);
         }
-        .dark .mt-8 .fa-brands {
+        .dark .social-btn {
+            background-color: #2D3748;
             color: var(--secondary);
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), -3px -3px 6px rgba(255, 255, 255, 0.1);
+        }
+        .social-btn:hover {
+            background-color: var(--accent);
+            color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 0 10px rgba(104, 211, 145, 0.5);
+        }
+        
+        .primary-btn {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            transition: all 0.3s ease;
+        }
+        .dark .primary-btn {
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+        }
+        .primary-btn:hover {
+            background: linear-gradient(45deg, var(--primary-dark), var(--secondary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .dark .primary-btn:hover {
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            box-shadow: 0 4px 15px rgba(104, 211, 145, 0.3);
+        }
+        
+        .secondary-btn {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        .dark .secondary-btn {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        .secondary-btn:hover {
+            background-color: var(--accent);
+            color: var(--light);
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+        
+        .skill-card, .project-card, .timeline-item div {
+            background-color: var(--light);
+        }
+        .dark .skill-card, .dark .project-card, .dark .timeline-item div {
+            background-color: #2D3748;
         }
         
         .skill-card:hover .skill-icon {
@@ -123,6 +182,9 @@
             height: 100%;
             background-color: var(--secondary);
         }
+        .dark .timeline-item::before {
+            background-color: var(--secondary);
+        }
         
         .absolute.w-4.h-4.bg-primary {
             background-color: var(--primary);
@@ -135,11 +197,42 @@
             background-color: rgba(44, 82, 130, 0.1);
         }
         .dark .bg-primary\/10 {
-            background-color: rgba(178, 164, 255, 0.1);
+            background-color: rgba(178, 164, 255, 0.2);
+        }
+        
+        .text-gray-600 {
+            color: #4B5563;
+        }
+        .dark .text-gray-600 {
+            color: var(--light);
+        }
+        
+        .text-gray-700 {
+            color: #374151;
+        }
+        .dark .text-gray-700 {
+            color: var(--light);
+        }
+        
+        .border-gray-300 {
+            border-color: #D1D5DB;
+        }
+        .dark .border-gray-300 {
+            border-color: var(--secondary);
+        }
+        
+        .bg-[#E2E8F0] {
+            background-color: #E2E8F0;
+        }
+        .dark .bg-[#E2E8F0] {
+            background-color: #4B5563;
         }
         
         .tech-stack {
             animation: scroll 20s linear infinite;
+        }
+        .dark .tech-stack {
+            animation: none; /* Disable animation in dark mode for clarity */
         }
         
         @keyframes scroll {
@@ -151,6 +244,9 @@
             border-right: 3px solid var(--secondary);
             animation: blink-caret 0.75s step-end infinite;
         }
+        .dark .typewriter {
+            border-right-color: var(--secondary);
+        }
         
         @keyframes blink-caret {
             from, to { border-color: transparent; }
@@ -160,6 +256,9 @@
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.3s ease-in-out;
+        }
+        .dark .mobile-menu {
+            background-color: #2D3748;
         }
         
         .mobile-menu.open {
@@ -180,11 +279,21 @@
             background-color: var(--secondary);
             transition: width 0.3s ease;
         }
+        .dark .nav-link::after {
+            background-color: var(--accent);
+        }
         
         .nav-link:hover::after {
             width: 100%;
         }
-
+        
+        footer {
+            background-color: var(--primary);
+        }
+        .dark footer {
+            background-color: var(--secondary);
+        }
+        
         /* Media Queries for Smartphones */
         @media (max-width: 640px) {
             .container {
@@ -192,13 +301,12 @@
                 padding-right: 1rem;
             }
 
-            #about {
-                padding-top: 4rem;
-                padding-bottom: 2rem;
+            #about, #skills, #projects, #experience, #cv, #contact {
+                padding: 2rem 0;
             }
 
             #about h1 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             #about h2 {
@@ -206,7 +314,7 @@
             }
 
             #about p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             #about .flex.space-x-4 {
@@ -217,6 +325,8 @@
             #about .flex.space-x-4 a {
                 width: 100%;
                 text-align: center;
+                font-size: 0.9rem;
+                padding: 0.75rem;
             }
 
             .md\:w-1\/2 {
@@ -224,15 +334,11 @@
             }
 
             .w-64.h-64.md\:w-80.md\:h-80 {
-                width: 12rem;
-                height: 12rem;
+                width: 10rem;
+                height: 10rem;
             }
 
-            #skills, #experience, #projects, #contact {
-                padding: 2rem 0;
-            }
-
-            #skills h2, #projects h2, #experience h2, #contact h2 {
+            #skills h2, #projects h2, #experience h2, #cv h2, #contact h2 {
                 font-size: 1.75rem;
             }
 
@@ -240,15 +346,23 @@
                 animation: none;
             }
 
-            .tech-stack .flex.space-x-12 {
+            .tech-stack .flex {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 1.5rem;
+                gap: 1.25rem;
             }
 
-            .tech-stack .flex.space-x-12 .flex {
-                flex-wrap: wrap;
-                gap: 1.5rem;
+            .tech-stack .flex-col {
+                width: 4rem;
+                text-align: center;
+            }
+
+            .tech-stack i {
+                font-size: 2.5rem;
+            }
+
+            .tech-stack span {
+                font-size: 0.85rem;
             }
 
             .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
@@ -256,14 +370,18 @@
             }
 
             .project-card .h-48 {
-                height: 10rem;
+                height: 8rem;
             }
 
-            .max-w-3xl {
-                max-width: 100%;
+            .project-card h3 {
+                font-size: 1.25rem;
             }
 
-            .max-w-4xl {
+            .project-card p {
+                font-size: 0.9rem;
+            }
+
+            .max-w-3xl, .max-w-4xl {
                 max-width: 100%;
             }
 
@@ -273,11 +391,17 @@
 
             #contact .flex.space-x-4 {
                 justify-content: center;
+                gap: 0.75rem;
+            }
+
+            #contact .social-btn {
+                width: 2.5rem;
+                height: 2.5rem;
             }
 
             #messagesModal {
-                width: 90%;
-                max-height: 80vh;
+                width: 95%;
+                max-height: 85vh;
             }
 
             .timeline-item::before {
@@ -290,13 +414,32 @@
 
             .timeline-item .absolute.w-4.h-4 {
                 left: -2px;
+                width: 0.75rem;
+                height: 0.75rem;
+            }
+
+            .timeline-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .timeline-item h4 {
+                font-size: 0.95rem;
+            }
+
+            .timeline-item ul li {
+                font-size: 0.9rem;
+            }
+
+            #cv .primary-btn {
+                font-size: 0.9rem;
+                padding: 0.75rem;
             }
         }
     </style>
 </head>
 <body class="text-gray-800 dark:text-gray-100">
     <!-- Theme Toggle -->
-    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full shadow-lg">
+    <button id="themeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full shadow-lg transition-transform">
         <i class="fas fa-moon dark:hidden"></i>
         <i class="fas fa-sun hidden dark:block"></i>
     </button>
@@ -304,20 +447,21 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 backdrop-blur-md z-40 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary">JAY</a>
+            <a href="#" class="text-2xl font-bold text-primary dark:text-[var(--secondary)]">JAY</a>
             <div class="hidden md:flex space-x-8">
                 <a href="#about" class="nav-link hover:text-primary transition">About</a>
                 <a href="#skills" class="nav-link hover:text-primary transition">Skills</a>
                 <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
                 <a href="#experience" class="nav-link hover:text-primary transition">Experience</a>
+                <a href="#cv" class="nav-link hover:text-primary transition">CV</a>
                 <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
             </div>
             <button id="mobileMenuBtn" class="md:hidden focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
+                <i class="fas fa-bars text-xl text-primary dark:text-[var(--secondary)]"></i>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-[var(--light)] dark:bg-[var(--dark)] shadow-lg z-50 p-6">
+        <div id="mobileMenu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-[var(--light)] dark:bg-[#2D3748] shadow-lg z-50 p-6">
             <button id="closeMenuBtn" class="absolute top-4 right-4 text-[var(--primary)] dark:text-[var(--secondary)]">
                 <i class="fas fa-times text-xl"></i>
             </button>
@@ -326,6 +470,7 @@
                 <a href="#skills" class="nav-link text-lg hover:text-primary transition">Skills</a>
                 <a href="#projects" class="nav-link text-lg hover:text-primary transition">Projects</a>
                 <a href="#experience" class="nav-link text-lg hover:text-primary transition">Experience</a>
+                <a href="#cv" class="nav-link text-lg hover:text-primary transition">CV</a>
                 <a href="#contact" class="nav-link text-lg hover:text-primary transition">Contact</a>
             </div>
         </div>
@@ -341,23 +486,19 @@
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6 typewriter">
                     Full-Stack Developer!
                 </h2>
-                <p class="text-lg mb-8 leading-relaxed">
+                <p class="text-lg mb-8 leading-relaxed text-gray-600 dark:text-[var(--light)]">
                     I build scalable web applications with cutting-edge technologies. My passion lies in creating seamless user experiences powered by robust backend systems.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#contact" class="px-6 py-3 bg-primary text-[var(--light)] rounded-lg hover:bg-primary-dark transition shadow-lg">
-                        Get In Touch
-                    </a>
-                    <a href="#projects" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
-                        View Projects
-                    </a>
+                    <a href="#contact" class="primary-btn px-6 py-3 text-[var(--light)] rounded-lg shadow-lg">Get In Touch</a>
+                    <a href="#projects" class="secondary-btn px-6 py-3 rounded-lg">View Projects</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center relative">
                 <div class="relative">
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/10 absolute -z-10 top-4 left-4 animate-pulse"></div>
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/10 dark:bg-[var(--secondary)]/20 absolute -z-10 top-4 left-4 animate-pulse"></div>
                     <img src="https://via.placeholder.com/400" alt="Professional headshot of JAY" 
-                         class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-[var(--light)] dark:border-[var(--dark)] shadow-xl">
+                         class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-[var(--light)] dark:border-[#2D3748] shadow-xl">
                 </div>
             </div>
         </div>
@@ -366,72 +507,40 @@
     <!-- Skills Section -->
     <section id="skills" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">My <span class="text-primary dark:text-[var(--secondary)]">Skills</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary dark:text-[var(--secondary)]">My <span class="text-primary dark:text-[var(--accent)]">Skills</span></h2>
             
             <div class="overflow-hidden mb-16">
-                <h3 class="text-xl text-center mb-6">Tech Stack</h3>
+                <h3 class="text-xl text-center mb-6 text-gray-700 dark:text-[var(--light)]">Tech Stack</h3>
                 <div class="flex items-center">
-                    <div class="w-full whitespace-nowrap">
-                        <div class="tech-stack flex whitespace-nowrap space-x-12">
-                            <div class="flex space-x-12">
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-react text-5xl mb-2"></i>
-                                    <span>React</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-node-js text-5xl mb-2"></i>
-                                    <span>Node.js</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-python text-5xl mb-2"></i>
-                                    <span>Python</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fas fa-database text-5xl mb-2"></i>
-                                    <span>MongoDB</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-aws text-5xl mb-2"></i>
-                                    <span>AWS</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-docker text-5xl mb-2"></i>
-                                    <span>Docker</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-git-alt text-5xl mb-2"></i>
-                                    <span>Git</span>
-                                </div>
+                    <div class="w-full">
+                        <div class="tech-stack flex flex-wrap justify-center gap-8">
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-react text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">React</span>
                             </div>
-                            <div class="flex space-x-12">
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-react text-5xl mb-2"></i>
-                                    <span>React</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-node-js text-5xl mb-2"></i>
-                                    <span>Node.js</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-python text-5xl mb-2"></i>
-                                    <span>Python</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fas fa-database text-5xl mb-2"></i>
-                                    <span>MongoDB</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-aws text-5xl mb-2"></i>
-                                    <span>AWS</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-docker text-5xl mb-2"></i>
-                                    <span>Docker</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <i class="fab fa-git-alt text-5xl mb-2"></i>
-                                    <span>Git</span>
-                                </div>
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-node-js text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Node.js</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-python text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Python</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i class="fas fa-database text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">MongoDB</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-aws text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">AWS</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-docker text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Docker</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <i class="fab fa-git-alt text-5xl mb-2"></i>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Git</span>
                             </div>
                         </div>
                     </div>
@@ -439,12 +548,12 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="skill-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl p-6 shadow-lg transition-all duration-300">
-                    <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
-                        <i class="fas fa-laptop-code text-3xl text-primary dark:text-[var(--secondary)]"></i>
+                <div class="skill-card bg-[var(--light)] dark:bg-[#2D3748] rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="skill-icon w-16 h-16 bg-primary/10 dark:bg-[var(--secondary)]/20 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
+                        <i class="fas fa-laptop-code text-3xl text-primary dark:text-[var(--accent)]"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Frontend Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-gray-700 dark:text-[var(--light)]">Frontend Development</h3>
+                    <p class="text-gray-600 dark:text-[var(--light)] mb-4">
                         Building responsive, accessible UIs with React, Next.js, and modern CSS frameworks.
                     </p>
                     <div class="flex flex-wrap gap-2">
@@ -455,12 +564,12 @@
                     </div>
                 </div>
                 
-                <div class="skill-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl p-6 shadow-lg transition-all duration-300">
-                    <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
-                        <i class="fas fa-server text-3xl text-primary dark:text-[var(--secondary)]"></i>
+                <div class="skill-card bg-[var(--light)] dark:bg-[#2D3748] rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="skill-icon w-16 h-16 bg-primary/10 dark:bg-[var(--secondary)]/20 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
+                        <i class="fas fa-server text-3xl text-primary dark:text-[var(--accent)]"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Backend Development</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-gray-700 dark:text-[var(--light)]">Backend Development</h3>
+                    <p class="text-gray-600 dark:text-[var(--light)] mb-4">
                         Developing scalable microservices and APIs with Node.js, Python, and cloud services.
                     </p>
                     <div class="flex flex-wrap gap-2">
@@ -471,12 +580,12 @@
                     </div>
                 </div>
                 
-                <div class="skill-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl p-6 shadow-lg transition-all duration-300">
-                    <div class="skill-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
-                        <i class="fas fa-cloud text-3xl text-primary dark:text-[var(--secondary)]"></i>
+                <div class="skill-card bg-[var(--light)] dark:bg-[#2D3748] rounded-xl p-6 shadow-lg transition-all duration-300">
+                    <div class="skill-icon w-16 h-16 bg-primary/10 dark:bg-[var(--secondary)]/20 rounded-full flex items-center justify-center mb-4 transition-transform duration-500">
+                        <i class="fas fa-cloud text-3xl text-primary dark:text-[var(--accent)]"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">DevOps & Cloud</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-gray-700 dark:text-[var(--light)]">DevOps & Cloud</h3>
+                    <p class="text-gray-600 dark:text-[var(--light)] mb-4">
                         Implementing CI/CD pipelines, containerization, and cloud infrastructure on AWS.
                     </p>
                     <div class="flex flex-wrap gap-2">
@@ -493,17 +602,17 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured <span class="text-primary dark:text-[var(--secondary)]">Projects</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary dark:text-[var(--secondary)]">Featured <span class="text-primary dark:text-[var(--accent)]">Projects</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="project-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                <div class="project-card bg-[var(--light)] dark:bg-[#2D3748] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
                     <div class="relative overflow-hidden h-48">
                         <img src="https://via.placeholder.com/400x300" alt="Dashboard interface of a SaaS platform with charts and metrics displayed" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">CloudSaaS Dashboard</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-gray-700 dark:text-[var(--light)]">CloudSaaS Dashboard</h3>
+                        <p class="text-gray-600 dark:text-[var(--light)] mb-4">
                             A comprehensive SaaS dashboard built with React, Node.js, and MongoDB for cloud service management.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -523,14 +632,14 @@
                     </div>
                 </div>
                 
-                <div class="project-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                <div class="project-card bg-[var(--light)] dark:bg-[#2D3748] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
                     <div class="relative overflow-hidden h-48">
                         <img src="https://via.placeholder.com/400x300" alt="Mobile application for e-commerce showing product listings with a clean interface" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">E-Commerce Mobile App</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-gray-700 dark:text-[var(--light)]">E-Commerce Mobile App</h3>
+                        <p class="text-gray-600 dark:text-[var(--light)] mb-4">
                             Cross-platform e-commerce application built with React Native and Firebase.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -549,14 +658,14 @@
                     </div>
                 </div>
                 
-                <div class="project-card bg-[var(--light)] dark:bg-[var(--dark)] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
+                <div class="project-card bg-[var(--light)] dark:bg-[#2D3748] rounded-xl overflow-hidden shadow-lg transition-all duration-300">
                     <div class="relative overflow-hidden h-48">
                         <img src="https://via.placeholder.com/400x300" alt="DevOps pipeline diagram showing CI/CD workflow with containerization" 
                              class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Automated Dev Pipeline</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-gray-700 dark:text-[var(--light)]">Automated Dev Pipeline</h3>
+                        <p class="text-gray-600 dark:text-[var(--light)] mb-4">
                             Kubernetes-based CI/CD pipeline automating testing and deployment for microservices.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
@@ -582,83 +691,96 @@
     <!-- Experience Section -->
     <section id="experience" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Work <span class="text-primary dark:text-[var(--secondary)]">Experience</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary dark:text-[var(--secondary)]">Work <span class="text-primary dark:text-[var(--accent)]">Experience</span></h2>
             
             <div class="max-w-3xl mx-auto">
                 <div class="timeline-item relative pl-10 pb-10">
-                    <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
-                    <div class="bg-[var(--light)] dark:bg-[var(--dark)] rounded-lg p-6 shadow-md">
+                    <div class="absolute w-4 h-4 bg-primary dark:bg-[var(--secondary)] rounded-full left-0 top-1 z-10"></div>
+                    <div class="bg-[var(--light)] dark:bg-[#2D3748] rounded-lg p-6 shadow-md">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Senior Full-Stack Developer</h3>
-                            <span class="bg-primary/10 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">November 2024 - Present</span>
+                            <h3 class="text-xl font-bold text-gray-700 dark:text-[var(--light)]">Senior Full-Stack Developer</h3>
+                            <span class="bg-primary/10 dark:bg-[var(--secondary)]/20 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">November 2024 - Present</span>
                         </div>
-                        <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">TechCorp Solutions</h4>
+                        <h4 class="text-lg text-gray-600 dark:text-[var(--light)] mb-4">TechCorp Solutions</h4>
                         <ul class="space-y-2">
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Led a team of 5 developers to build a scalable SaaS platform serving 50K+ users</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Led a team of 5 developers to build a scalable SaaS platform serving 50K+ users</span>
                             </li>
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Implemented microservices architecture reducing API response time by 60%</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Implemented microservices architecture reducing API response time by 60%</span>
                             </li>
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Designed CI/CD pipeline reducing deployment time from 30 minutes to under 5</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Designed CI/CD pipeline reducing deployment time from 30 minutes to under 5</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="timeline-item relative pl-10 pb-10">
-                    <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
-                    <div class="bg-[var(--light)] dark:bg-[var(--dark)] rounded-lg p-6 shadow-md">
+                    <div class="absolute w-4 h-4 bg-primary dark:bg-[var(--secondary)] rounded-full left-0 top-1 z-10"></div>
+                    <div class="bg-[var(--light)] dark:bg-[#2D3748] rounded-lg p-6 shadow-md">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Frontend Developer</h3>
-                            <span class="bg-primary/10 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">December 2024 - July 2025</span>
+                            <h3 class="text-xl font-bold text-gray-700 dark:text-[var(--light)]">Frontend Developer</h3>
+                            <span class="bg-primary/10 dark:bg-[var(--secondary)]/20 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">December 2024 - July 2025</span>
                         </div>
-                        <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">Digital Innovations</h4>
+                        <h4 class="text-lg text-gray-600 dark:text-[var(--light)] mb-4">Digital Innovations</h4>
                         <ul class="space-y-2">
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Developed React components</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Developed React components</span>
                             </li>
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Optimized web performance</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Optimized web performance</span>
                             </li>
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Mentored junior developers in modern JavaScript patterns</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Mentored junior developers in modern JavaScript patterns</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="timeline-item relative pl-10 pb-10">
-                    <div class="absolute w-4 h-4 bg-primary rounded-full left-0 top-1 z-10"></div>
-                    <div class="bg-[var(--light)] dark:bg-[var(--dark)] rounded-lg p-6 shadow-md">
+                    <div class="absolute w-4 h-4 bg-primary dark:bg-[var(--secondary)] rounded-full left-0 top-1 z-10"></div>
+                    <div class="bg-[var(--light)] dark:bg-[#2D3748] rounded-lg p-6 shadow-md">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Backend Developer</h3>
-                            <span class="bg-primary/10 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">February 2025 - Present</span>
+                            <h3 class="text-xl font-bold text-gray-700 dark:text-[var(--light)]">Backend Developer</h3>
+                            <span class="bg-primary/10 dark:bg-[var(--secondary)]/20 text-primary dark:text-[var(--secondary)] text-sm px-3 py-1 rounded-full">February 2025 - Present</span>
                         </div>
-                        <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">WebSystems Ltd</h4>
+                        <h4 class="text-lg text-gray-600 dark:text-[var(--light)] mb-4">WebSystems Ltd</h4>
                         <ul class="space-y-2">
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Built RESTful APIs handling 1M+ requests daily with Node.js</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Built RESTful APIs handling 1M+ requests daily with Node.js</span>
                             </li>
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Implemented real-time features with WebSockets</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Implemented real-time features with WebSockets</span>
                             </li>
                             <li class="flex">
                                 <i class="fas fa-check text-primary dark:text-[var(--secondary)] mr-2 mt-1"></i>
-                                <span>Designed database schemas for high-performance applications</span>
+                                <span class="text-gray-600 dark:text-[var(--light)]">Designed database schemas for high-performance applications</span>
                             </li>
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <section id="cv" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary dark:text-[var(--secondary)]">Download My <span class="text-primary dark:text-[var(--accent)]">CV</span></h2>
+            <div class="text-center">
+                <p class="text-gray-600 dark:text-[var(--light)] mb-6 max-w-lg mx-auto">
+                    Interested in my full qualifications and experience? Download my CV to learn more about my skills and projects.
+                </p>
+                <a href="data:application/pdf;base64,JVBERi0xLjUKJcTl8uXrp/Og0MTGCjEgMCBvYmoKPDwgL1R5cGUgL0NhdGFsb2cgL1BhZ2VzIDIgMCBSID4+CmVuZG9iagoKMiAwIG9iago8PCAvVHlwZSAvUGFnZXMgL0NvdW50IDEgL0tpZHMgWyAzIDAgUiBdID4+CmVuZG9iagoKMyAwIG9iago8PCAvVHlwZSAvUGFnZSAvUGFyZW50IDIgMCBSIC9SZXNvdXJjZXMgNCAwIFIgL0NvbnRlbnRzIDUgMCBSIC9NZWRpYUJveCBbMCAwIDU5NS4yOCA4NDEuODldID4+CmVuZG9iagoKNCAwIG9iago8PCAvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSV0gL0ZvbnQgPDwgL0YxIDYgMCBSID4+ID4+CmVuZG9iagoKNSAwIG9iago8PCAvTGVuZ3RoIDM2NTAgPj4Kc3RyZWFtCkJUIDAgMCA1OTUuMjggODQxLjg5IFRtIC9GMSAxMCBUZiAoKSBTSiA0MC44IDc5My4zMyBUbSAvRjEgMTIgVGYgKEFraXBlbHUgSmF5KSBTSiA0MC44IDc3NS4xOCBUbSAvRjEgMTAgVGYgKChqYXlqYXl3b24wMUBnbWFpbC5jb20gfCArMjM0ODE2MzMyNDEzMiB8IElCQURBTiwgTkcpKSBTSiA0MC44IDc0OC4yMyBUbSAvRjEgMTIgVGYgKFByb2Zlc3Npb25hbCBTdW1tYXJ5KSBTSiA0MC44IDcyNi4xMiBUbSAvRjEgMTAgVGYgKEZ1bGwtU3RhY2sgRGV2ZWxvcGVyIHdpdGggOCBtb250aHMgb2YgZXhwZXJpZW5jZSBpbiBidWlsZGluZyBzY2FsYWJsZSB3ZWIgYXBwbGljYXRpb25zLiBQYXNzaW9uYXRlIGFib3V0IGNyZWF0aW5nIHNlYW1sZXNzIHVzZXIgZXhwZXJpZW5jZXMgYW5kIHJvYnVzdCBiYWNrZW5kIHN5c3RlbXMuIFNraWxsZWQgaW4gbW9kZXJuIHdlYiB0ZWNobm9sb2dpZXMgYW5kIGNsb3VkIGluZnJhc3RydWN0dXJlLCB3aXRoIGEgZm9jdXMgb24gZGVsaXZlcmluZyBoaWdoLXF1YWxpdHkgc29sdXRpb25zLiBJbnNwaXJlZCBieSB0aGUgdmlicmFudCB0ZWNoIHNjZW5lIGluIE5pZ2VyaWEuKSBTSiA0MC44IDY2My4yNyBUbSAvRjEgMTIgVGYgKEVkdWNhdGlvbikgU0ogNDAuOCA2NDEuMTYgVG0gL0YxIDEwIFRmIChCYWNoZWxvciBvZiBTY2llbmNlIGluIENvbXB1dGVyIFNjaWVuY2UsIFVuaXZlcnNpdHkgb2YgSWJhZGFuLCBJYmFkYW4sIE5pZ2VyaWEg4oCTIDIwMjEg4oCTIDIwMjUpKSBTSiA0MC44IDYxNC4yMSBUbSAvRjEgMTIgVGYgKFdvcmsgRXhwZXJpZW5jZSkgU0ogNDAuOCA1OTIuMSBUbSAvRjEgMTAgVGYgKFNlbmlvciBGdWxsLVN0YWNrIERldmVsb3BlciwgVGVjaENvcnAgU29sdXRpb25zLCBJYmFkYW4sIE5pZ2VyaWEg4oCTIE5vdmVtYmVyIDIwMjQg4oCTIFByZXNlbnQpKSBTSiA0MC44IDU3OC43MSBUbSAvRjEgMTAgVGYgKOKCrCBTZXJ2ZWQgYXMgdGhlIHRlY2huaWNhbCBsZWFkIGZvciBhIHRlYW0gb2YgNSBkZXZlbG9wZXJzLCBvdmVyc2VlaW5nIHRoZSBkZXZlbG9wbWVudCBvZiBhIFNhYVNcCnBsYXRmb3JtIHNlcnZpbmcgb3ZlciA1MCwwMDAgdXNlcnMuKSBTSiA0MC44IDU2NS4zMiBUbSAvRjEgMTAgVGYgKOKCrCBJbXBsZW1lbnRlZCBtaWNyb3NlcnZpY2VzIGFyY2hpdGVjdHVyZSB3aXRoIE5vZGUuanMgYW5kIE1vbmdvREIsIHJlZHVjaW5nIEFQSSByZXNwb25zZSB0aW1lIGJ5IDYwJS4pKSBTSiA0MC44IDU1MS45MyBUbSAvRjEgMTAgVGYgKOKCrCBEZXNpZ25lZCBhbmQgaW1wbGVtZW50ZWQgYSBDSUNEL3BpcGVsaW5lIHVzaW5nIEplbmtpbnMgYW5kIERvY2tlciwgc2hvcnRlbmluZyBkZXBsb3ltZW50IHRpbWUgZnJvbSAzMCBtaW51dGVzIHRvIHVuZGVyIDUuKSBTSiA0MC44IDUzMi4xNSBUbSAvRjEgMTAgVGYgKEZyb250ZW5kIERldmVsb3BlciwgRGlnaXRhbCBJbm5vdmF0aW9ucyAsIEliYWRhbiwgTmlnZXJpYSAg4oCTIERlY2VtYmVyIDIwMjQg4oCTIEp1bHkgMjAyNSkgU0ogNDAuOCA1MTguNzYgVG0gL0YxIDEwIFRmIChvIENvbnRyaWJ1dGVkIHRvIHRoZSBkZXZlbG9wbWVudCBvZiBSZWFjdCBjb21wb25lbnRzIGZvciBhIHdlYi1iYXNlZCBhcHBsaWNhdGlvbiwgaW1wcm92aW5nIHVzZXIgaW50ZXJmYWNlIHJlc3BvbnNpdmVuZXNzLiApKSBTSiA0MC44IDUwNS4zNyBUbSAvRjEgMTAgVGYgKOKCrCBPcHRpbWl6ZWQgd2ViIHBlcmZvcm1hbmNlIHRocm91Z2ggY29kZSBtaW5pZmljYXRpb24gYW5kIGxhenktbG9hZGluZyB0ZWNobmlxdWVzLCByZXN1bHRpbmcgaW4gYSBzbW9vdGhlciB1c2VyIGV4cGVyaWVuY2UuKSBTSiA0MC44IDQ5MS45OCBUbSAvRjEgMTAgVGYgKOKCrCBNZW50b3JlZCBqdW5pb3IgZGV2ZWxvcGVycyBvbiBtb2Rlcm4gSmF2YVNjcmlwdCBwYXR0ZXJucywgZm9zdGVyaW5nIHRlYW0gZ3Jvd3RoIGFuZCBjb2xsYWJvcmF0aW9uLiApKSBTSiA0MC44IDQ3Mi4yIFRtIC9GMSAxMCBUZiAoQmFja2VuZCBEZXZlbG9wZXIsIFdlYlN5c3RlbXMgTHRkLCBJYmFkYW4sIE5pZ2VyaWEg4oCTIEZlYnJ1YXJ5IDIwMjUg4oCTIFByZXNlbnQpKSBTSiA0MC44IDQ1OC44MSBUbSAvRjEgMTAgVGYgKOKCrCBCdWlsdCBSRVNUZnVsIEFQSWlzIHdpdGggTm9kZS5qcywgY2FwYWJsZSBvZiBoYW5kbGluZyAxbWlsbGlvbiByZXF1ZXN0cyBkYWlseS4pKSBTSiA0MC44IDQ0NS40MiBUbSAvRjEgMTAgVGYgKOKCrCBJbXBsZW1lbnRlZCByZWFsLXRpbWUgZmVhdHVyZXMgdXNpbmcgV2ViU29ja2V0cywgaW1wcm92aW5nIGFwcGxpY2F0aW9uIGludGVyYWN0aXZpdHkuKSBTSiA0MC44IDQzMi4wMyBUbSAvRjEgMTAgVGYgKOKCrCBEZXNpZ25lZCBkYXRhYmFzZSBzY2hlbWFzIGZvciBoaWdoLXBlcmZvcm1hbmNlIGFwcGxpY2F0aW9ucyB1c2luZyBNb25nb0RCLCBvcHRpbWl6aW5nIGRhdGEgcmV0cmlldmFsIGFuZCBzdG9yYWdlLiApKSBTSiA0MC44IDQwNS4wOCBUbSAvRjEgMTIgVGYgKFByb2plY3RzKSBTSiA0MC44IDM4My45NyBUbSAvRjEgMTAgVGYgKENsb3VkU2FhUyBEYXNoYm9hcmQg4oCTIDIwMjUpKSBTSiA0MC44IDM3MC41OCBUbSAvRjEgMTAgVGYgKOKCrCBBIGNvbXByZWhlbnNpdmUgU2FhUyBkYXNoYm9hcmQgYnVpbHQgd2l0aCBSZWFjdCwgTm9kZS5qcywgYW5kIE1vbmdvREIgZm9yIGNsb3VkIHNlcnZpY2UgbWFuYWdlbWVudC4pKSBTSiA0MC44IDM1Ny4xOSBUbSAvRjEgMTAgVGYgKOKCrCBUZWNobm9sb2dpZXM6IFJlYWN0LCBOb2RlLmpzLCBNb25nb0RCLCBBV1MuKSBTSiA0MC44IDM0MC44MSBUbSAvRjEgMTAgVGYgKEUtQ29tbWVyY2UgTW9iaWxlIEFwcCAg4oCTIDIwMjUpKSBTSiA0MC44IDMyNy40MiBUbSAvRjEgMTAgVGYgKOKCrCBDcm9zcy1wbGF0Zm9ybSBlLWNvbW1lcmNlIGFwcGxpY2F0aW9uIGJ1aWx0IHdpdGggUmVhY3QgTmF0aXZlIGFuZCBGaXJlYmFzZS4pKSBTSiA0MC44IDMxNC4wMyBUbSAvRjEgMTAgVGYgKOKCrCBUZWNobm9sb2dpZXM6IFJlYWN0IE5hdGl2ZSwgRmlyZWJhc2UsIFJlZHV4LiApKSBTSiA0MC44IDI5Ny42NSBUbSAvRjEgMTAgVGYgKEF1dG9tYXRlZCBEZXYgUGlwZWxpbmUg4oCTIDIwMjUpKSBTSiA0MC44IDI4NC4yNiBUbSAvRjEgMTAgVGYgKOKCrCBLdWJlcm5ldGVzLWJhc2VkIENJQ0QgcGlwZWxpbmUgYXV0b21hdGluZyB0ZXN0aW5nIGFuZCBkZXBsb3ltZW50IGZvciBtaWNyb3NlcnZpY2VzLiApKSBTSiA0MC44IDI3MC44NyBUbSAvRjEgMTAgVGYgKOKCrCBUZWNobm9sb2dpZXM6IEt1YmVybmV0ZXMsIERvY2tlciwgSmVua2lucywgQVdTIEVDMi4pKSBTSiA0MC44IDI0My45MiBUbSAvRjEgMTIgVGYgKFNraWxscykgU0ogNDAuOCAyMjIuODEgVG0gL0YxIDEwIFRmIChSZWxldmFudCBTa2lsbHMpKSBTSiA0MC44IDIwOS40MiBUbSAvRjEgMTAgVGYgKOKCrCBSZWFjdCwgTm9kZS5qcywgUHl0aG9uLCBNb25nb0RCLCBBV1MsIERvY2tlciwgS3ViZXJuZXRlcywgR2l0LCBUeXBlU2NyaXB0LCBUYWlsd2luZCwgUmVkdXgsIEV4cHJlc3MsIEdyYXBoUUwsIEplbmtpbnMsIFRlcnJhZm9ybS4pKSBTSiA0MC44IDE4Mi40NyBUbSAvRjEgMTIgVGYgKFNvY2lhbCBNZWRpYSkgU0ogNDAuOCAxNjEuMzYgVG0gL0YxIDEwIFRmIChnaXRodWIuY29tL2phaWpheXdvbjAxKSBTSiA0MC44IDE0Ny45NyBUbSAvRjEgMTAgVGYgKGxpbmtlZGluLmNvbS9pbi9qYWlqYXl3b24wMSkgU0ogNDAuOCAxMzQuNTggVG0gL0YxIDEwIFRmICh0d2l0dGVyLmNvbS9qYWlqYXl3b24wMSkgU0ogRVQKZW5kc3RyZWFtCgo2IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UcnVlVHlwZSAvQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvRmlyc3RDaGFyIDMyIC9MYXN0Q2hhciAyNTUgPj4KZW5kb2JqCgp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTAgMDAwMDAgbiAKMDAwMDAwMDA2OCAwMDAwMCBuIAowMDAwMDAwMTQwIDAwMDAwIG4gCjAwMDAwMDAyNDQgMDAwMDAgbiAKMDAwMDAwMDMwMyAwMDAwMCBuIAowMDAwMDAzOTYzIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNyAvUm9vdCAxIDAgUiA+Pgptc3RhcnR4cmVmCjQwMjEKJSVFT0YK" download="Akinpelu_Jay_Resume.pdf" class="primary-btn px-6 py-3 text-[var(--light)] rounded-lg shadow-lg">Download CV</a>
             </div>
         </div>
     </section>
@@ -666,91 +788,89 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Get In <span class="text-primary dark:text-[var(--secondary)]">Touch</span></h2>
+            <h2 class="text-3xl font-bold text-center mb-12 text-primary dark:text-[var(--secondary)]">Get In <span class="text-primary dark:text-[var(--accent)]">Touch</span></h2>
             
             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Let's talk about your project</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-700 dark:text-[var(--light)]">Let's talk about your project</h3>
+                    <p class="text-gray-600 dark:text-[var(--light)] mb-6">
                         Have a project in mind or want to discuss potential opportunities? Feel free to reach out - I'm always open to new challenges and collaborations.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-primary dark:text-[var(--secondary)]"></i>
+                            <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-[var(--secondary)]/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary dark:text-[var(--accent)]"></i>
                             </div>
-                            <span>jayjaywon01@gmail.com</span>
+                            <span class="text-gray-600 dark:text-[var(--light)]">jayjaywon01@gmail.com</span>
                         </div>
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone text-primary dark:text-[var(--secondary)]"></i>
+                            <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-[var(--secondary)]/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-primary dark:text-[var(--accent)]"></i>
                             </div>
-                            <span>+2348163324132</span>
+                            <span class="text-gray-600 dark:text-[var(--light)]">+2348163324132</span>
                         </div>
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-primary dark:text-[var(--secondary)]"></i>
+                            <div class="w-10 h-10 rounded-full bg-primary/10 dark:bg-[var(--secondary)]/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-primary dark:text-[var(--accent)]"></i>
                             </div>
-                            <span>IBADAN, NG</span>
+                            <span class="text-gray-600 dark:text-[var(--light)]">IBADAN, NG</span>
                         </div>
                     </div>
                     <div class="mt-8 flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#4B5563] flex items-center justify-center hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
+                        <a href="https://github.com/jayjaywon01" class="social-btn w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#4B5563] flex items-center justify-center hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
+                        <a href="https://linkedin.com/in/jayjaywon01" class="social-btn w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-[#E2E8F0] dark:bg-[#4B5563] flex items-center justify-center hover:bg-[var(--accent)] hover:text-[var(--light)] transition">
+                        <a href="https://twitter.com/jayjaywon01" class="social-btn w-10 h-10 rounded-full flex items-center justify-center transition">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
-                    <button id="viewMessagesBtn" class="mt-4 px-4 py-2 bg-primary text-[var(--light)] rounded-lg hover:bg-primary-dark transition">
-                        View Messages
-                    </button>
+                    <button id="viewMessagesBtn" class="mt-4 primary-btn px-4 py-2 text-[var(--light)] rounded-lg">View Messages</button>
                 </div>
                 
-                <form class="bg-[var(--light)] dark:bg-[var(--dark)] p-6 rounded-xl shadow-lg" id="contact-form">
-                    <div class="mb-4">
-                        <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
-                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                        <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[var(--dark)]" required></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-primary text-[var(--light)] py-3 rounded-lg hover:bg-primary-dark transition shadow-lg">
-                        Send Message
-                    </button>
-                    <p id="form-message" class="text-center mt-4 hidden text-[var(--accent)]">Message saved! Thank you for reaching out.</p>
-                </form>
+                <div class="bg-[var(--light)] dark:bg-[#2D3748] p-6 rounded-xl shadow-lg">
+                    <form id="contact-form">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 dark:text-[var(--light)] mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-[var(--secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[#2D3748] text-gray-700 dark:text-[var(--light)]" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 dark:text-[var(--light)] mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-[var(--secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[#2D3748] text-gray-700 dark:text-[var(--light)]" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 dark:text-[var(--light)] mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-[var(--secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[#2D3748] text-gray-700 dark:text-[var(--light)]" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 dark:text-[var(--light)] mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-[var(--secondary)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] dark:focus:ring-[var(--secondary)] bg-[var(--light)] dark:bg-[#2D3748] text-gray-700 dark:text-[var(--light)]" required></textarea>
+                        </div>
+                        <button type="submit" class="primary-btn w-full text-[var(--light)] py-3 rounded-lg shadow-lg">Send Message</button>
+                        <p id="form-message" class="text-center mt-4 hidden text-[var(--accent)]">Message saved! Thank you for reaching out.</p>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Messages Modal -->
     <div id="messagesModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-[var(--light)] dark:bg-[var(--dark)] p-6 rounded-xl shadow-lg max-w-lg w-full overflow-y-auto">
+        <div class="bg-[var(--light)] dark:bg-[#2D3748] p-6 rounded-xl shadow-lg max-w-lg w-full overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold">Submitted Messages</h3>
+                <h3 class="text-xl font-bold text-gray-700 dark:text-[var(--light)]">Submitted Messages</h3>
                 <button id="closeMessagesBtn" class="text-[var(--primary)] dark:text-[var(--secondary)]">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            <div id="messagesList" class="space-y-4"></div>
+            <div id="messagesList" class="space-y-4 text-gray-600 dark:text-[var(--light)]"></div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="py-8 bg-[var(--primary)] text-[var(--light)]">
+    <footer class="py-8 bg-[var(--primary)] dark:bg-[var(--secondary)] text-[var(--light)]">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2025 JAY. All rights reserved.</p>
         </div>
@@ -769,6 +889,7 @@
         const messagesModal = document.getElementById('messagesModal');
         const closeMessagesBtn = document.getElementById('closeMessagesBtn');
         const messagesList = document.getElementById('messagesList');
+        const adminPassword = 'myPortfolio2025'; // Password for viewing messages
 
         // Apply saved theme or system preference on load
         const savedTheme = localStorage.getItem('theme');
@@ -828,28 +949,33 @@
             contactForm.reset();
         });
 
-        // View messages
+        // Password-protected view messages
         viewMessagesBtn.addEventListener('click', () => {
-            const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-            messagesList.innerHTML = '';
-            if (messages.length === 0) {
-                messagesList.innerHTML = '<p class="text-gray-600 dark:text-gray-300">No messages yet.</p>';
+            const password = prompt('Enter password to view messages:');
+            if (password === adminPassword) {
+                const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+                messagesList.innerHTML = '';
+                if (messages.length === 0) {
+                    messagesList.innerHTML = '<p class="text-gray-600 dark:text-[var(--light)]">No messages yet.</p>';
+                } else {
+                    messages.forEach((msg, index) => {
+                        const msgElement = document.createElement('div');
+                        msgElement.className = 'border-b border-gray-300 dark:border-[var(--secondary)] pb-2';
+                        msgElement.innerHTML = `
+                            <p><strong>Name:</strong> ${msg.name}</p>
+                            <p><strong>Email:</strong> ${msg.email}</p>
+                            <p><strong>Subject:</strong> ${msg.subject}</p>
+                            <p><strong>Message:</strong> ${msg.message}</p>
+                            <p><strong>Time:</strong> ${new Date(msg.timestamp).toLocaleString()}</p>
+                            <button class="delete-message text-[var(--primary)] dark:text-[var(--secondary)] hover:text-[var(--accent)] text-sm mt-2" data-index="${index}">Delete</button>
+                        `;
+                        messagesList.appendChild(msgElement);
+                    });
+                }
+                messagesModal.classList.remove('hidden');
             } else {
-                messages.forEach((msg, index) => {
-                    const msgElement = document.createElement('div');
-                    msgElement.className = 'border-b border-gray-300 dark:border-gray-600 pb-2';
-                    msgElement.innerHTML = `
-                        <p><strong>Name:</strong> ${msg.name}</p>
-                        <p><strong>Email:</strong> ${msg.email}</p>
-                        <p><strong>Subject:</strong> ${msg.subject}</p>
-                        <p><strong>Message:</strong> ${msg.message}</p>
-                        <p><strong>Time:</strong> ${new Date(msg.timestamp).toLocaleString()}</p>
-                        <button class="delete-message text-[var(--primary)] dark:text-[var(--secondary)] hover:text-[var(--accent)] text-sm mt-2" data-index="${index}">Delete</button>
-                    `;
-                    messagesList.appendChild(msgElement);
-                });
+                alert('Incorrect password. Access denied.');
             }
-            messagesModal.classList.remove('hidden');
         });
 
         // Close messages modal
@@ -864,7 +990,7 @@
                 let messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
                 messages.splice(index, 1);
                 localStorage.setItem('contactMessages', JSON.stringify(messages));
-                viewMessagesBtn.click(); // Refresh the list
+                viewMessagesBtn.click(); // Refresh the list (re-prompts for password)
             }
         });
     </script>
