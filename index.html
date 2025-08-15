@@ -86,11 +86,29 @@
             from { width: 0 }
             to { width: 100% }
         }
-        
         @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: var(--primary) }
         }
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
         
         .pulse {
             animation: pulse 2s infinite;
@@ -104,7 +122,7 @@
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- Animated Background -->
+
     <div class="fixed inset-0 -z-10 overflow-hidden">
         <div class="absolute inset-0 bg-grid opacity-10"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30"></div>
@@ -112,7 +130,6 @@
         <div class="absolute top-1/2 right-1/4 w-64 h-64 rounded-full bg-purple-500 opacity-10 blur-3xl"></div>
     </div>
     
-    <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -122,12 +139,12 @@
                     </div>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:gradient-text">Home</a>
-                        <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:gradient-text">About</a>
-                        <a href="#skills" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:gradient-text">Skills</a>
-                        <a href="#projects" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:gradient-text">Projects</a>
-                        <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all hover:gradient-text">Contact</a>
+                     <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-primary transition">Home</a>
+                <a href="#about" class="nav-link hover:text-primary transition">About</a>
+                <a href="#skills" class="nav-link hover:text-primary transition">Skills</a>
+                <a href="#projects" class="nav-link hover:text-primary transition">Projects</a>
+                <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -142,7 +159,7 @@
         
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-md border-t border-gray-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div class="hidden md:flex space-x-8">
                 <a href="#home" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all hover:gradient-text">Home</a>
                 <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all hover:gradient-text">About</a>
                 <a href="#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all hover:gradient-text">Skills</a>
@@ -152,7 +169,6 @@
         </div>
     </nav>
     
-    <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6 hero-content">
@@ -160,32 +176,33 @@
                 <h1 class="text-4xl md:text-6xl font-bold leading-tight">
                     <span class="gradient-text">I'm Jay!</span>
                     <br>
-                    <span class="typewriter">A Fullstack Developer!</span>
+                    <span>A Fullstack Developer!</span>
                 </h1>
                 <p class="text-lg text-gray-400 max-w-lg">
                     Crafting immersive digital experiences with cutting-edge technologies. 
                     I bridge the gap between design and functionality.
                 </p>
                 <div class="flex space-x-4 pt-4 hero-buttons">
-                    <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md font-medium text-white hover:opacity-90 transition-all glow">
+                    <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-blue-400 to-purple-600 rounded-md font-medium text-white hover:opacity-90 transition-all glow">
                         View My Work
                     </a>
-                    <a href="#contact" class="px-6 py-3 border border-gray-700 rounded-md font-medium text-white hover:bg-gray-800/50 transition-all gradient-border">
+                    <a href="#contact" class="px-6 py-3 border border-gray-700 rounded-md font-medium text-white hover:bg-gray-800/100 transition-all gradient-border">
                         Contact Me
                     </a>
                 </div>
+
                 <div class="flex space-x-4 pt-2">
-                    <a href="#" class="text-gray-400 hover:text-white transition-all">
+                    <a href="https://github.com/jaywon111" class="text-gray-400 hover:text-white transition-all">
                         <i class="fab fa-github fa-lg"></i>
                     </a>
                     <a href="#" class="text-gray-400 hover:text-white transition-all">
                         <i class="fab fa-linkedin fa-lg"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-all">
+                    <a href="https://x.com/catrotangold?t=fGtQlOxfF0t-pqXvgEoFag&s=09" class="text-gray-400 hover:text-white transition-all">
                         <i class="fab fa-twitter fa-lg"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-all">
-                        <i class="fab fa-dev fa-lg"></i>
+                    <a href="https://wa.me/message/GV3KVX743l2FC1" class="text-gray-400 hover:text-white transition-all">
+                        <i class="fab fa-whatsapp fa-lg"></i>
                     </a>
                 </div>
             </div>
@@ -201,7 +218,6 @@
         </div>
     </section>
     
-    <!-- About Section -->
     <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -214,8 +230,8 @@
             <div class="space-y-6">
                 <h3 class="text-2xl font-bold">The Developer Behind the Code</h3>
                 <p class="text-gray-400">
-                    I'm Jay, a passionate fullstack developer with 5+ years of experience building web applications 
-                    that solve real-world problems. My journey in tech started when I built my first website at 17, 
+                    I'm Jay, a passionate fullstack developer obsessed with building web applications 
+                    that solve real-world problems. My journey in tech started when I collaborated on a project in high school, 
                     and I've been hooked ever since.
                 </p>
                 <p class="text-gray-400">
@@ -224,12 +240,12 @@
                 </p>
                 <p class="text-gray-400">
                     When I'm not coding, you can find me contributing to open-source projects, exploring new technologies, 
-                    or mentoring aspiring developers.
+                    or listening to some good music.
                 </p>
                 <div class="pt-4">
-                    <a href="#" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-all">
-                        Download Resume
-                        <i class="fas fa-arrow-down ml-2"></i>
+                    <a href="https://storage.googleapis.com/xai-storage-grok-artifact-outputs/97a8610b-2918-4ca4-84e6-6096da90e06a.pdf?Expires=1755265912&GoogleAccessId=grok-in-xai-cache%40enterprise-api-425510.iam.gserviceaccount.com&Signature=XrSO7rnI52zwW3Oss0xpV6qnUDivCg9AEpvUqpnw%2B2cL1wGPEDKgJaCNtXGp5lcbLs6A990rm3STYlRQC%2F2YiFwyIu1ux0ZW7PF%2FeoMpkyur2IGtZR9iGy6SPrZw%2BczLJcWscvWcTdE3gnABo4gIv8ib4EiQutdlg9fNupJNTW5Gvh2dHpZnH%2FETvHUXsm9GsWGKpBFV9h4Kdn0mm0egXvFgz%2F93Egk13y8ZfVB54GnUWrKOVGm3NTBsAEJFdPIxu3EhJQ52gR%2FEd8FmWbEGTgoElpjuDSJ9doA0sW7DeylYc8LBDE68m5p%2B%2BngltUO3LelhPZXtMTiKeJeBVVrQuw%3D%3D" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-all font-500">
+                        <i class="fas fa-file-download mr-2"></i>
+                       Download My Resume
                     </a>
                 </div>
             </div>
@@ -645,13 +661,6 @@ function buildFuture() {
                 </div>
                 
                 <div class="flex flex-col items-center md:items-end">
-                    <div class="flex space-x-6 mb-4">
-                        <a href="#home" class="text-gray-400 hover:text-white transition-all">Home</a>
-                        <a href="#about" class="text-gray-400 hover:text-white transition-all">About</a>
-                        <a href="#skills" class="text-gray-400 hover:text-white transition-all">Skills</a>
-                        <a href="#projects" class="text-gray-400 hover:text-white transition-all">Projects</a>
-                        <a href="#contact" class="text-gray-400 hover:text-white transition-all">Contact</a>
-                    </div>
                     <p class="text-gray-500 text-sm">© 2025 Jay. All rights reserved.</p>
                 </div>
             </div>
