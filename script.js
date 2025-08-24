@@ -1,5 +1,5 @@
 // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
+         document.getElementById('menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
@@ -57,8 +57,6 @@
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just show an alert
             alert(`Thanks for your message, ${name}! I'll get back to you soon.`);
             
             this.reset();
