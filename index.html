@@ -6,123 +6,9 @@
     <title>Jay | Fullstack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        
-        :root {
-            --primary: #00f0ff;
-            --secondary: #7b2dff;
-            --dark: #0a0a0a;
-            --light: #f8f9fa;
-        }
-        
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
-            overflow-x: hidden;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .gradient-border {
-            position: relative;
-        }
-        
-        .gradient-border::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 0.5rem;
-            padding: 2px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-        
-        .glow {
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
-        }
-        
-        .terminal-line {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .terminal-line::before {
-            content: ">";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 2px;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary) }
-        }
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen">
-
     <div class="fixed inset-0 -z-10 overflow-hidden">
         <div class="absolute inset-0 bg-grid opacity-10"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30"></div>
@@ -157,7 +43,7 @@
             </div>
         </div>
         
-        <!-- Mobile menu -->
+        
         <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-md border-t border-gray-800">
             <div class="hidden md:flex space-x-8">
                 <a href="#home" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all hover:gradient-text">Home</a>
@@ -208,9 +94,7 @@
             </div>
             <div class="relative flex justify-center">
                 <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden gradient-border">
-                    <img src="assets/My Passport.jpg" 
-                         alt="" 
-                         class="w-full h-full object-cover">
+                    <a href="https://ibb.co/sJK1D9Zp"><img src="https://i.ibb.co/rfxpL2VK/My-Passport.jpg" alt="My-Passport" border="0" class="w-full h-full object-cover"></a>
                 </div>
                 <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 blur-xl opacity-30"></div>
                 <div class="absolute -top-4 -left-4 w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 blur-xl opacity-30"></div>
@@ -277,7 +161,7 @@ function buildFuture() {
         </div>
     </section>
     
-    <!-- Skills Section -->
+    
     <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -287,7 +171,7 @@ function buildFuture() {
         </div>
         
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <!-- Frontend -->
+            
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg p-6 h-full flex flex-col items-center text-center">
                     <div class="w-16 h-16 mb-4 flex items-center justify-center text-3xl text-blue-400">
@@ -300,7 +184,7 @@ function buildFuture() {
                 </div>
             </div>
             
-            <!-- Backend -->
+            
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg p-6 h-full flex flex-col items-center text-center">
                     <div class="w-16 h-16 mb-4 flex items-center justify-center text-3xl text-purple-400">
@@ -313,7 +197,7 @@ function buildFuture() {
                 </div>
             </div>
             
-            <!-- Databases -->
+            
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg p-6 h-full flex flex-col items-center text-center">
                     <div class="w-16 h-16 mb-4 flex items-center justify-center text-3xl text-green-400">
@@ -326,7 +210,7 @@ function buildFuture() {
                 </div>
             </div>
             
-            <!-- DevOps -->
+            
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg p-6 h-full flex flex-col items-center text-center">
                     <div class="w-16 h-16 mb-4 flex items-center justify-center text-3xl text-yellow-400">
@@ -357,7 +241,7 @@ function buildFuture() {
             <div class="bg-gray-900 rounded-lg p-8">
                 <h3 class="text-xl font-bold mb-6 text-center">Tech Stack Proficiency</h3>
                 <div class="space-y-6">
-                    <!-- JavaScript -->
+                    
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm font-medium">JavaScript/TypeScript</span>
@@ -368,7 +252,7 @@ function buildFuture() {
                         </div>
                     </div>
                     
-                    <!-- React -->
+                    
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm font-medium">React Ecosystem</span>
@@ -379,7 +263,7 @@ function buildFuture() {
                         </div>
                     </div>
                     
-                    <!-- Node.js -->
+                   
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm font-medium">Node.js</span>
@@ -390,7 +274,7 @@ function buildFuture() {
                         </div>
                     </div>
                     
-                    <!-- Python -->
+                    
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm font-medium">Python</span>
@@ -401,7 +285,7 @@ function buildFuture() {
                         </div>
                     </div>
                     
-                    <!-- Cloud -->
+                    
                     <div>
                         <div class="flex justify-between mb-2">
                             <span class="text-sm font-medium">Cloud Services</span>
@@ -416,7 +300,7 @@ function buildFuture() {
         </div>
     </section>
     
-    <!-- Projects Section -->
+   
     <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -426,7 +310,7 @@ function buildFuture() {
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
+            
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg overflow-hidden h-full flex flex-col">
                     <div class="relative h-48 overflow-hidden">
@@ -461,7 +345,7 @@ function buildFuture() {
                 </div>
             </div>
             
-            <!-- Project 2 -->
+            
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg overflow-hidden h-full flex flex-col">
                     <div class="relative h-48 overflow-hidden">
@@ -496,7 +380,7 @@ function buildFuture() {
                 </div>
             </div>
             
-            <!-- Project 3 -->
+           
             <div class="gradient-border p-1 rounded-lg bg-gray-900/50 card-hover">
                 <div class="bg-gray-900 rounded-lg overflow-hidden h-full flex flex-col">
                     <div class="relative h-48 overflow-hidden">
@@ -540,7 +424,7 @@ function buildFuture() {
         </div>
     </section>
     
-    <!-- Contact Section -->
+   
     <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -651,7 +535,7 @@ function buildFuture() {
         </div>
     </section>
     
-    <!-- Footer -->
+    
     <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -667,201 +551,10 @@ function buildFuture() {
         </div>
     </footer>
     
-    <!-- Back to Top Button -->
+    
     <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-blue-400 hover:text-white hover:bg-gray-700 transition-all opacity-0 invisible">
         <i class="fas fa-arrow-up"></i>
     </button>
-    
-    <script>
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
-        });
-        
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the form data to a server
-            // For this example, we'll just show an alert
-            alert(`Thanks for your message, ${name}! I'll get back to you soon.`);
-            
-            // Reset form
-            this.reset();
-        });
-        
-        // Add animation to cards when they come into view
-        const observerOptions = {
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fadeIn');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.card-hover').forEach(card => {
-            observer.observe(card);
-            card.style.opacity = '0';
-            card.classList.add('transition-opacity', 'duration-500');
-        });
-        
-        // Add animation class when element is in view
-        setTimeout(() => {
-            document.querySelectorAll('.card-hover').forEach(card => {
-                card.style.opacity = '1';
-            });
-        }, 100);
-    </script>
-    <style>
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            /* Hero Section */
-            #home {
-                padding-top: 24px;
-                padding-bottom: 16px;
-            }
-            
-            .hero-content {
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            /* Navigation */
-            nav {
-                padding: 0 16px;
-            }
-            
-            /* Sections */
-            section {
-                padding: 40px 16px;
-            }
-            
-            /* About Section */
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            
-            /* Skills Section */
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skill-card {
-                text-align: center;
-            }
-            
-            /* Projects Section */
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Contact Section */
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            
-            /* Typography */
-            h1 {
-                font-size: 2.5rem;
-                line-height: 1.2;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            /* Terminal Effect */
-            .typewriter {
-                white-space: normal;
-                border-right: none;
-                animation: none;
-            }
-            
-            /* Form */
-            .contact-form input,
-            .contact-form textarea {
-                padding: 12px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.75rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .hero-buttons a {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+    <script src="script.js"></script>
 </body>
 </html>
