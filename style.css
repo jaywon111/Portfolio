@@ -20,39 +20,51 @@
             background-clip: text;
             color: transparent;
         }
-        
-        .gradient-border {
+        .skill-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+            background-color: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(5px);
             position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
         }
         
-        .gradient-border::before {
-            content: "";
+        .skill-card::before {
+            content: '';
             position: absolute;
             inset: 0;
-            border-radius: 0.5rem;
-            padding: 2px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: -1;
         }
         
-        .glow {
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
-        .card-hover {
-            transition: all 0.3s ease;
+        .skill-card:hover::before {
+            opacity: 0.2;
         }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+
+        .progress-bar-container {
+            position: relative;
+            height: 6px;
+            background-color: #2D3748;
+            border-radius: 9999px;
+            overflow: hidden;
         }
-        
-        .terminal-line {
+
+        .progress-bar {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .terminal-line { 
             position: relative;
             padding-left: 1.5rem;
         }
@@ -63,20 +75,7 @@
             left: 0;
             color: var(--primary);
         }
-        
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 2px;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
+       
         @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: var(--primary) }
@@ -115,7 +114,9 @@
                 padding-top: 24px;
                 padding-bottom: 16px;
             }
-            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
             .hero-content {
                 text-align: center;
             }
@@ -166,11 +167,7 @@
             h2 {
                 font-size: 2rem;
             }
-            /* .typewriter {
-                white-space: normal;
-                border-right: none;
-                animation: none;
-            } */
+            
             
             .contact-form input,
             .contact-form textarea {
